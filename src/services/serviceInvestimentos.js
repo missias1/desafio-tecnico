@@ -10,8 +10,12 @@ const addAssetInWallet = async (quantity, clientId, assetId)=> {
   return {sucess: { message: "Sucess purchase!", code: 201}}
 };
 
-const removeAssetFromWallet = async ()=> {
+const removeAssetFromWallet = async (quantity, clientId, assetId)=> {
+  const [removeAsset] = await modelInvestimentos.removeAssetFromWallet(quantity, clientId, assetId);
 
+  if(removeAsset.affectedRows === 0) return {error: {message: "Sale failed", code: 404}}
+
+  return {sucess: { message: "Sucess sale!", code: 201}}
 };
 
 module.exports = {

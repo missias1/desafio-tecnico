@@ -6,9 +6,11 @@ const addAssetInWallet = async (quantity, clientId, assetId)=> connection.execut
     WHERE client_id= ? AND asset_id = ?`, [quantity, clientId, assetId]
 );
 
-const removeAssetFromWallet = async ()=> {
-
-};
+const removeAssetFromWallet = async (quantity, clientId, assetId)=> connection.execute(
+  `UPDATE DesafioTecnico.assets_clients 
+    SET quantity_asset = quantity_asset - ?
+    WHERE client_id= ? AND asset_id = ?`, [quantity, clientId, assetId]
+);
 
 module.exports = {
   addAssetInWallet,

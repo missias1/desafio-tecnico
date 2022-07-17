@@ -3,6 +3,6 @@ const controllerInvestimentos = require('../../controllers/controllerInvestiment
 const {validateJWT} = require('../../utils/jwtToken');
 
 routes.post('/comprar', validateJWT, controllerInvestimentos.addAssetInWallet);
-// routes.post('/vender');
+routes.post('/vender', validateJWT, controllerInvestimentos.removeAssetFromWallet);
 
 module.exports = routes;
