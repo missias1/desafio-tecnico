@@ -1,6 +1,6 @@
-const routes = require('express').Routes();
+const routes = require('express').Router();
 
-routes.post('/comprar');
-routes.post('/vender');
+// routes.post('/comprar');
+// routes.post('/vender');
 
 module.exports = routes;

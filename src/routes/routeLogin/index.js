@@ -1,5 +1,5 @@
 const routes = require('express').Router();
 
-routes.post('/');
+// routes.post('/');
 
 module.exports = routes;
