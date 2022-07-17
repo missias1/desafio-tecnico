@@ -1,8 +1,10 @@
 const connection = require('../database/connection');
 
-const addCashInWallet = async ()=> {
-
-};
+const addCashInWallet = async (value, clientId)=> connection.execute(
+  `UPDATE DesafioTecnico.clients
+    SET balance = balance + ?
+    WHERE client_id= ?;`, [value, clientId]
+);
 
 const removeCashFromWallet = async ()=> {
 

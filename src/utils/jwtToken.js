@@ -13,8 +13,10 @@ const validateJWT = async (req, res, next) => {
   try {
     const payload = JWT.verify(token, SECRET);
 
-    const [{ client_id }] = await modelLogin.findClientById(clientId);
-  
+    const [client] = await modelLogin.findClientById(clientId);
+    if(!client) return res.status(400).json({message: "Client doesn't found!"})
+    
+    const { client_id } = client
     if(client_id !== Number(payload.client_id)) return res.status(400).json({message: "Action not allowed"})
 
     req.user = payload

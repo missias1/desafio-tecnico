@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 app.use('/login', routeLogin);
 // app.use('/ativos')
-// app.use('/conta')
+app.use('/conta', routesConta);
 app.use('/investimentos', routesInvestimentos);
 
 
