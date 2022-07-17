@@ -4,6 +4,6 @@ const { validateJWT } = require('../../utils/jwtToken')
 
 routes.post('/deposito', validateJWT, controllerConta.addCashInWallet);
 routes.post('/saque', validateJWT, controllerConta.removeCashFromWallet);
-// routes.get('/:id');
+routes.get('/:clientId', validateJWT, controllerConta.getWalletInfoById);
 
 module.exports = routes;

@@ -16,8 +16,11 @@ const removeCashFromWallet = async (value, clientId)=> {
   return { sucess: { message: "Sucess withdraw!", code: 201 } }
 };
 
-const getWalletInfoById = async ()=> {
+const getWalletInfoById = async (clientId)=> {
+  const [getClient] = await modelConta.getWalletInfoById(clientId);
+  if(!getClient) return { error: { message: "User doesn't exist!", code: 404 } }
 
+  return { sucess: { message: getClient, code: 200 } }
 };
 
 module.exports = {

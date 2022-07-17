@@ -12,9 +12,12 @@ const removeCashFromWallet = async (value, clientId)=> connection.execute(
     WHERE client_id= ?;`, [value, clientId]
 );
 
-const getWalletInfoById = async ()=> {
-
-};
+const getWalletInfoById = async (clientId)=> {
+  const [client] = await connection.execute(
+  `SELECT client_id AS clientId, balance FROM DesafioTecnico.clients WHERE client_id=?;`, [clientId]
+  );
+  return client;
+}
 
 module.exports = {
   addCashInWallet,
