@@ -9,7 +9,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-// app.use('/login')
+app.use('/login', routeLogin);
 // app.use('/ativos')
 // app.use('/conta')
 // app.use('/investimentos')
