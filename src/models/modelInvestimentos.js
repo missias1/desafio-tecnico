@@ -1,4 +1,4 @@
-const serviceInvestimentos = require('../services/serviceInvestimentos');
+const connection = require('../database/connection');
 
 const addAssetInWallet = async ()=> {
 
