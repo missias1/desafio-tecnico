@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use('/login', routeLogin);
-// app.use('/ativos')
+app.use('/ativos', routesAtivos);
 app.use('/conta', routesConta);
 app.use('/investimentos', routesInvestimentos);
 

@@ -1,6 +1,8 @@
 const routes = require('express').Router();
+const controllerAtivos = require('../../controllers/controllerAtivos');
+const { validateJWT } = require('../../utils/jwtToken');
 
-// routes.get('/{idClient}');
-// routes.get('/{idAsset}');
+routes.get('/:clientId', validateJWT, controllerAtivos.getAssetsFromOneClientById);
+// routes.get('/{assetId}');
 
 module.exports = routes;
