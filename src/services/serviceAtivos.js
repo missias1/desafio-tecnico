@@ -1,8 +1,8 @@
-const res = require('express/lib/response');
 const modelAtivos = require('../models/modelAtivos');
 
 const getAllAssets = async ()=> {
-
+  const assets = await modelAtivos.getAllAssets();
+  return assets;
 };
 
 const getAssetsFromOneClientById = async (clientId)=> {
@@ -12,9 +12,11 @@ const getAssetsFromOneClientById = async (clientId)=> {
   return clientAssets;
 };
 
-const getAssetById = async ()=> {
-
-};
+//Refatorar depois que endpoint for corrigido
+// const getAssetById = async (assetId)=> {
+//   const asset = await modelAtivos.getAssetById(assetId);
+//   return asset
+// };
 
 module.exports = {
   getAllAssets,

@@ -16,17 +16,17 @@
     "body-parser": "^1.20.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.0"
   },
   "devDependencies": {
-    "mysql-import": "^5.0.21",
     "chai": "^4.3.6",
     "eslint": "^8.19.0",
-    "eslint-config-trybe-backend": "^1.0.4",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-node": "^4.1.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-config-trybe-backend": "^1.0.4",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.0",
     "eslint-plugin-node": "^11.1.0",
@@ -34,6 +34,7 @@
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "mocha": "^10.0.0",
+    "mysql-import": "^5.0.21",
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1",
     "sinon": "^14.0.0"

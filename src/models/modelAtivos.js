@@ -1,9 +1,10 @@
 const connection = require('../database/connection');
 
 const getAllAssets = async ()=> {
-  const [assets] = connection.execute(
+  const [assets] = await connection.execute(
     `SELECT asset_id, name_asset, price FROM DesafioTecnico.assets;`
   )
+  return assets;
 };
 
 const getAssetsFromOneClientById = async (clientId)=> {
@@ -17,8 +18,12 @@ const getAssetsFromOneClientById = async (clientId)=> {
   return clientAssets;
 };
 
-const getAssetById = async ()=> {
-
+const getAssetById = async (assetId)=> {
+  const [asset] = await connection.execute(
+    `SELECT asset_id AS assetId, quantity_available AS quantityAvailable, price
+    FROM DesafioTecnico.assets WHERE asset_id = ?;`, [assetId]
+  );
+  return asset;
 };
 
 module.exports = {

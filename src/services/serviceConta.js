@@ -3,9 +3,9 @@ const modelConta = require('../models/modelConta');
 const addCashInWallet = async (value, clientId)=> {
   const [addCash] = await modelConta.addCashInWallet(value, clientId);
   
-  if(addCash.affectedRows === 0) return { error: { message: "Deposit failed!", code: 404 } }
+  if(addCash.affectedRows === 0) throw { message: "Deposit failed!", status: 404 };
 
-  return { sucess: { message: "Sucess deposit!", code: 201 } }
+  return addCash;
 };
 
 const removeCashFromWallet = async (value, clientId)=> {
