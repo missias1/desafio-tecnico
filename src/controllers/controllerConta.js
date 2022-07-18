@@ -10,21 +10,15 @@ const addCashInWallet = async (req, res)=> {
 const removeCashFromWallet = async (req, res)=> {
   const { value, clientId } = req.body;
 
-  const { error, sucess } = await serviceConta.removeCashFromWallet(value, clientId);
-  if(error) return res.status(error.code).json(error.message);
-
-  res.status(sucess.code).json(sucess.message);
+  const removeCash = await serviceConta.removeCashFromWallet(value, clientId);
+  res.status(200).json(removeCash);
 };
 
 const getWalletInfoById = async (req, res)=> {
-  console.log('entrei no controller conta')
   const { clientId } = req.params;
-  console.log(clientId)
   
-  const { error, sucess } = await serviceConta.getWalletInfoById(clientId);
-  if(error) return res.status(error.code).json(error.message);
-
-  res.status(sucess.code).json(sucess.message);
+  const walletInfo = await serviceConta.getWalletInfoById(clientId);
+  res.status(200).json(walletInfo);
 };
 
 module.exports = {

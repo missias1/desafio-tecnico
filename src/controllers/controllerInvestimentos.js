@@ -3,20 +3,16 @@ const serviceInvestimentos = require('../services/serviceInvestimentos');
 const addAssetInWallet = async (req, res)=> {
   const { quantity, clientId, assetId } = req.body;
 
-  const { error, sucess } = await serviceInvestimentos.addAssetInWallet(quantity, clientId, assetId);
-  if(error) return res.status(error.code).json(error.message);
-
-  res.status(sucess.code).json(sucess.message);
+  const addAsset = await serviceInvestimentos.addAssetInWallet(quantity, clientId, assetId);
+  res.status(200).json(addAsset);
 };
 
 
 const removeAssetFromWallet = async (req, res)=> {
   const { quantity, clientId, assetId } = req.body;
 
-  const { error, sucess } = await serviceInvestimentos.removeAssetFromWallet(quantity, clientId, assetId);
-  if(error) return res.status(error.code).json(error.message);
-
-  res.status(sucess.code).json(sucess.message);
+  const removeAsset = await serviceInvestimentos.removeAssetFromWallet(quantity, clientId, assetId);
+  res.status(200).json(removeAsset);
 };
 
 module.exports = {

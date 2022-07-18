@@ -1,4 +1,5 @@
 const express = require('express');
+require('express-async-errors');
 const bodyParser = require('body-parser');
 const routeLogin = require('./src/routes/routeLogin');
 const routesAtivos = require('./src/routes/routesAtivos');
