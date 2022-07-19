@@ -6,16 +6,14 @@ const addAssetInWallet = async (quantity, clientId, assetId)=> {
 
   const [addAsset] = await modelInvestimentos.addAssetInWallet(quantity, clientId, assetId);
 
-  if(addAsset.affectedRows === 0) throw createErrorObj(404, "Purchase failed!")
+  if(addAsset.affectedRows === 0) throw createErrorObj(400, "Purchase failed!")
   // return addAsset; é boa prática deixar sem retorno?
 };
 
 const removeAssetFromWallet = async (quantity, clientId, assetId)=> {
   const [removeAsset] = await modelInvestimentos.removeAssetFromWallet(quantity, clientId, assetId);
 
-  if(removeAsset.affectedRows === 0) return {error: {message: "Sale failed", code: 404}}
-
-  return {sucess: { message: "Sucess sale!", code: 201}}
+  if(removeAsset.affectedRows === 0) throw createErrorObj(400, "Sale failed!");
 };
 
 module.exports = {

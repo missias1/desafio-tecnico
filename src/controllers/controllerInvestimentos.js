@@ -11,8 +11,8 @@ const addAssetInWallet = async (req, res)=> {
 const removeAssetFromWallet = async (req, res)=> {
   const { quantity, clientId, assetId } = req.body;
 
-  const removeAsset = await serviceInvestimentos.removeAssetFromWallet(quantity, clientId, assetId);
-  res.status(200).json(removeAsset);
+  await serviceInvestimentos.removeAssetFromWallet(quantity, clientId, assetId);
+  res.status(200).json({ message: `Sucess sale of ${quantity} assets!`});
 };
 
 module.exports = {
