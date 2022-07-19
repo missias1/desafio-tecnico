@@ -6,8 +6,7 @@ const addAssetInWallet = async (quantity, clientId, assetId)=> {
   const [addAsset] = await modelInvestimentos.addAssetInWallet(quantity, clientId, assetId);
 
   if(addAsset.affectedRows === 0) return {error: {message: "Purchase failed", code: 404}}
-  //verificar codigo
-  return {sucess: { message: "Sucess purchase!", code: 201}}
+  // return addAsset; é boa prática deixar sem retorno?
 };
 
 const removeAssetFromWallet = async (quantity, clientId, assetId)=> {

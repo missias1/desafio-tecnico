@@ -3,8 +3,8 @@ const serviceInvestimentos = require('../services/serviceInvestimentos');
 const addAssetInWallet = async (req, res)=> {
   const { quantity, clientId, assetId } = req.body;
 
-  const addAsset = await serviceInvestimentos.addAssetInWallet(quantity, clientId, assetId);
-  res.status(200).json(addAsset);
+  await serviceInvestimentos.addAssetInWallet(quantity, clientId, assetId);
+  res.status(201).json({ message: `Sucess purchase of ${quantity} assets!` });
 };
 
 

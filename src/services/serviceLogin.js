@@ -1,14 +1,13 @@
 const modelLogin = require('../models/modelLogin');
+const createErrorObj = require('../utils/createObjError');
 const { generateToken } = require('../utils/jwtToken');
 
 const findClient = async (email, password)=> {
   const [client] = await modelLogin.findClient(email, password)
-  if(!client) {
-    return {error: {message: "Invalid fields", code: 400}}
-  }
+  if(!client) throw createErrorObj(400, "Username or password invalid!")
   const { client_id, name } = client;
   const token = generateToken({ client_id, name, email })
-  return {sucess: {token, code: 200}};
+  return token;
 };
 
 module.exports = {
