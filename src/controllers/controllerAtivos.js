@@ -5,6 +5,13 @@ const getAllAssets = async (_req, res)=> {
   res.status(200).json(assets);
 };
 
+const getAssetById = async (req, res)=> {
+  const { assetId } = req.params;
+
+  const asset = await serviceAtivos.getAssetById(assetId);
+  res.status(200).json(asset);
+};
+
 const getAssetsFromOneClientById = async (req, res)=> {
   const { clientId } = req.params;
 
@@ -12,17 +19,9 @@ const getAssetsFromOneClientById = async (req, res)=> {
   res.status(200).json(clientAsset);
 };
 
-// const getAssetById = async (req, res)=> {
-//   console.log('entrei no controller ativo');
-//   const { assetId } = req.params;
-
-//   const result = await serviceAtivos.getAssetById(assetId);
-//   console.log(result)
-
-// };
 
 module.exports = {
   getAllAssets,
   getAssetsFromOneClientById,
-  // getAssetById,
+  getAssetById,
 }
