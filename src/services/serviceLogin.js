@@ -1,5 +1,5 @@
 const modelLogin = require('../models/modelLogin');
-const createErrorObj = require('../utils/createObjError');
+const createErrorObj = require('../utils/createErrorObj');
 const { generateToken } = require('../utils/jwtToken');
 
 const findClient = async (email, password)=> {

@@ -1,11 +1,12 @@
 const modelInvestimentos = require('../models/modelInvestimentos');
+const createErrorObj = require('../utils/createErrorObj');
 
 const addAssetInWallet = async (quantity, clientId, assetId)=> {
   //fazer validação de que a quantidade de asset disponivel é maior que a compra
 
   const [addAsset] = await modelInvestimentos.addAssetInWallet(quantity, clientId, assetId);
 
-  if(addAsset.affectedRows === 0) return {error: {message: "Purchase failed", code: 404}}
+  if(addAsset.affectedRows === 0) throw createErrorObj(404, "Purchase failed!")
   // return addAsset; é boa prática deixar sem retorno?
 };
 
