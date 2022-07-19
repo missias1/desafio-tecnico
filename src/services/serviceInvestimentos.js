@@ -1,9 +1,8 @@
 const modelInvestimentos = require('../models/modelInvestimentos');
 const createErrorObj = require('../utils/createErrorObj');
 
-const addAssetInWallet = async (quantity, clientId, assetId)=> {
+const addAssetInWallet = async (quantity, clientId, assetId, clientToken)=> {
   //fazer validação de que a quantidade de asset disponivel é maior que a compra
-
   const [addAsset] = await modelInvestimentos.addAssetInWallet(quantity, clientId, assetId);
 
   if(addAsset.affectedRows === 0) throw createErrorObj(400, "Purchase failed!")
