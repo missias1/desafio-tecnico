@@ -8,14 +8,14 @@ const getAllAssets = async ()=> {
 };
 
 const getAssetById = async (assetId)=> {
-  const asset = await modelAtivos.getAssetById(assetId);
-  if(asset === undefined) throw createErrorObj(400, { message: "This asset does not exist!"})
+  const [asset] = await modelAtivos.getAssetById(assetId);
+  if(!asset) throw createErrorObj(400, "This asset does not exist!")
   return asset;
 };
 
 const getAssetsFromOneClientById = async (clientId)=> {
-  const [clientAssets] = await modelAtivos.getAssetsFromOneClientById(clientId);
-  if(!clientAssets) throw createErrorObj(400, { message: "User not found"})
+  const clientAssets = await modelAtivos.getAssetsFromOneClientById(clientId);
+  if(clientAssets.length === 0) throw createErrorObj(400, "User not found")
   return clientAssets;
 };
 

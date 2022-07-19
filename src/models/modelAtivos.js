@@ -9,7 +9,7 @@ const getAllAssets = async ()=> {
   };
   
 const getAssetById = async (id)=> {
-    const [[asset]] = await connection.execute(
+    const [asset] = await connection.execute(
       `SELECT asset_id AS assetId, quantity_available AS quantityAvailable, price
       FROM DesafioTecnico.assets WHERE asset_id = ?;`, [id]
     );

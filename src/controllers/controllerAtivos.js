@@ -1,4 +1,4 @@
-const serviceAtivos = require('../models/modelAtivos');
+const serviceAtivos = require('../services/serviceAtivos');
 
 const getAllAssets = async (_req, res)=> {
   const assets = await serviceAtivos.getAllAssets();
@@ -16,6 +16,7 @@ const getAssetsFromOneClientById = async (req, res)=> {
   const { clientId } = req.params;
 
   const clientAsset = await serviceAtivos.getAssetsFromOneClientById(clientId);
+  console.log(clientAsset);
   res.status(200).json(clientAsset);
 };
 
