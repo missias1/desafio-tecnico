@@ -1,12 +1,12 @@
 const connection = require('../database/connection');
 
-const addCashInWallet = async (value, clientId)=> connection.execute(
+const increaseCashInWallet = async (value, clientId)=> connection.execute(
   `UPDATE DesafioTecnico.clients
     SET balance = balance + ?
     WHERE client_id= ?;`, [value, clientId]
 );
 
-const removeCashFromWallet = async (value, clientId)=> connection.execute(
+const decreaseCashFromWallet = async (value, clientId)=> connection.execute(
   `UPDATE DesafioTecnico.clients
     SET balance = balance - ?
     WHERE client_id= ?;`, [value, clientId]
@@ -20,7 +20,7 @@ const getWalletInfoById = async (clientId)=> {
 }
 
 module.exports = {
-  addCashInWallet,
-  removeCashFromWallet,
+  increaseCashInWallet,
+  decreaseCashFromWallet,
   getWalletInfoById,
 }
