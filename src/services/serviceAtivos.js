@@ -9,18 +9,19 @@ const getAllAssets = async ()=> {
 
 const getAssetById = async (assetId)=> {
   const asset = await modelAtivos.getAssetById(assetId);
-  if(!asset) throw createErrorObj(400, { message: "This asset does not exist!"})
+  if(asset === undefined) throw createErrorObj(400, { message: "This asset does not exist!"})
   return asset;
 };
 
 const getAssetsFromOneClientById = async (clientId)=> {
   const [clientAssets] = await modelAtivos.getAssetsFromOneClientById(clientId);
+  if(!clientAssets) throw createErrorObj(400, { message: "User not found"})
   return clientAssets;
 };
 
 
 module.exports = {
+  getAssetById,
   getAllAssets,
   getAssetsFromOneClientById,
-  getAssetById,
 }

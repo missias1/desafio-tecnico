@@ -1,16 +1,15 @@
-const joi = require('joi');
+const Joi = require('joi');
+const createErrorObj = require('../utils/createErrorObj');
 
-const LOGINSCHEMA = joi.object({
-  email: joi.string().required().email(),
-  password: joi.string().required().min(6)
+const LOGINSCHEMA = Joi.object({
+  email: Joi.string().required().email(),
+  password: Joi.string().required().min(6)
 });
 
-const validateLogin = (req, res, next)=> {
-  const { clientId, value } = req.body;
-
-  const { error } = LOGINSCHEMA.validate(clientId, value)
-  if(error) throw { error }
-  next()
+const validateLogin = (req, _res, next)=> {
+    const {error} = LOGINSCHEMA.validate(req.body)
+    if(error) throw createErrorObj(400, error.message)
+    next()
 }
 
 module.exports = {

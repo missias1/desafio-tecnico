@@ -8,14 +8,14 @@ const getAllAssets = async ()=> {
     return assets;
   };
   
-const getAssetById = async (assetId)=> {
+const getAssetById = async (id)=> {
     const [[asset]] = await connection.execute(
       `SELECT asset_id AS assetId, quantity_available AS quantityAvailable, price
-      FROM DesafioTecnico.assets WHERE asset_id = ?;`, [assetId]
+      FROM DesafioTecnico.assets WHERE asset_id = ?;`, [id]
     );
     return asset;
   };
-  
+
 const getAssetsFromOneClientById = async (clientId)=> {
   const [clientAssets] = await connection.execute(
     `SELECT t1.client_id AS clientId, t2.asset_id, t3.price,
@@ -29,7 +29,7 @@ const getAssetsFromOneClientById = async (clientId)=> {
 
 
 module.exports = {
+  getAssetById,
   getAllAssets,
   getAssetsFromOneClientById,
-  getAssetById,
 }

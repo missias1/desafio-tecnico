@@ -6,9 +6,9 @@ const getAllAssets = async (_req, res)=> {
 };
 
 const getAssetById = async (req, res)=> {
-  const { assetId } = req.params;
+  const { id } = req.params;
 
-  const asset = await serviceAtivos.getAssetById(assetId);
+  const asset = await serviceAtivos.getAssetById(id);
   res.status(200).json(asset);
 };
 
