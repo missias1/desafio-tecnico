@@ -3,15 +3,15 @@ const serviceConta = require('../services/serviceConta');
 const addCashInWallet = async (req, res)=> {
   const { value, clientId } = req.body;
 
-  const addCash = await serviceConta.addCashInWallet(value, clientId);
-  res.status(200).json(addCash);
+  await serviceConta.addCashInWallet(value, clientId);
+  res.status(200).json({ message: `Sucess deposit of R$${value}!`});
 };
 
 const removeCashFromWallet = async (req, res)=> {
   const { value, clientId } = req.body;
 
-  const removeCash = await serviceConta.removeCashFromWallet(value, clientId);
-  res.status(200).json(removeCash);
+  await serviceConta.removeCashFromWallet(value, clientId);
+  res.status(200).json({ message: `Sucess withdraw of R$${value}!`});
 };
 
 const getWalletInfoById = async (req, res)=> {

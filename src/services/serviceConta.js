@@ -1,26 +1,23 @@
 const modelConta = require('../models/modelConta');
+const createErrorObj = require('../utils/createErrorObj')
 
 const addCashInWallet = async (value, clientId)=> {
   const [addCash] = await modelConta.addCashInWallet(value, clientId);
   
-  if(addCash.affectedRows === 0) throw { message: "Deposit failed!", status: 404 };
-
-  return addCash;
+  if(addCash.affectedRows === 0) throw createErrorObj(400, "Deposit failed");
 };
 
 const removeCashFromWallet = async (value, clientId)=> {
-  console.log('entrei no serviceconta')
   const [removeCash] = await modelConta.removeCashFromWallet(value, clientId);
-  if(removeCash.affectedRows === 0) return { error: { message: "Withdraw failed!", code: 404 } }
 
-  return { sucess: { message: "Sucess withdraw!", code: 201 } }
+  if(removeCash.affectedRows === 0) throw createErrorObj(400, "Withdraw failed!");
 };
 
 const getWalletInfoById = async (clientId)=> {
-  const [getClient] = await modelConta.getWalletInfoById(clientId);
-  if(!getClient) return { error: { message: "User doesn't exist!", code: 404 } }
+  const [walletInfo] = await modelConta.getWalletInfoById(clientId);
+  if(!walletInfo) throw createErrorObj(400, "User doesn't exist!");
 
-  return { sucess: { message: getClient, code: 200 } }
+  return walletInfo;
 };
 
 module.exports = {
