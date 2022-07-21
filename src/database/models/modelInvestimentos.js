@@ -1,4 +1,4 @@
-const connection = require('../database/connection');
+const connection = require('../connection');
 
 const increaseAssetInWallet = async (quantity, clientId, assetId)=> connection.execute(
   `UPDATE DesafioTecnico.assets_clients 

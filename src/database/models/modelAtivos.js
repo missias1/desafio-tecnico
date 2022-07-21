@@ -1,4 +1,4 @@
-const connection = require('../database/connection');
+const connection = require('../connection');
 
 
 const getAllAssets = async ()=> {

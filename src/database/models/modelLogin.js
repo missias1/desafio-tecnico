@@ -1,4 +1,4 @@
-const connection = require('../database/connection');
+const connection = require('../connection');
 
 const findClient = async (email, password)=> {
   const [client] = await connection.execute(

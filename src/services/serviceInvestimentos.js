@@ -1,6 +1,6 @@
-const modelInvestimentos = require('../models/modelInvestimentos');
-const modelAtivos = require('../models/modelAtivos');
-const modelConta = require('../models/modelConta');
+const modelInvestimentos = require('../database/models/modelInvestimentos');
+const modelAtivos = require('../database/models/modelAtivos');
+const modelConta = require('../database/models/modelConta');
 const createErrorObj = require('../utils/createErrorObj');
 
 const increaseAssetInWallet = async (quantity, clientId, assetId)=> {
@@ -9,15 +9,17 @@ const increaseAssetInWallet = async (quantity, clientId, assetId)=> {
   const hasAssetInWallet = arrAssets.some((obj)=> obj.assetId === assetId);
   if(!hasAssetInWallet) await modelInvestimentos.createAssetInWallet(assetId, clientId, quantity);
 
-  //verifica a quantidade de ativos disponpiveis, antes de registrar a compra
+  //verifica a quantidade de ativos disponiveis, antes de registrar a compra
   const [asset] = await modelAtivos.getAssetById(assetId);
   const { quantityAvailable, price } = asset;
   if(quantity > quantityAvailable) throw createErrorObj(400, "This quantity is not available!");
 
-  //adiciona mais ativos ao já existente na carteira e diminui a quantidade de ativos disponíveis na corretora
+  //adiciona mais ativos ao já existente na carteira
   const [addAsset] = await modelInvestimentos.increaseAssetInWallet(quantity, clientId, assetId);
   if(addAsset.affectedRows !== 0){
+    //diminui a quantidade de ativos disponíveis na corretora
     await modelAtivos.decreaseAssetsAvailable(quantity, assetId);
+
     //remove do saldo do cliente a quantidade gasta para comprar os ativos
     const totalPurchase = quantity * price;
     console.log(totalPurchase);
@@ -36,10 +38,13 @@ const decreaseAssetFromWallet = async (quantity, clientId, assetId)=> {
   //verifica se a quantidade a ser vendida é maior que a disponível na carteira
   if(quantity > quantityAsset) throw createErrorObj(400, `You have ${quantityAsset} assets and you can not sale more assets than you have!`)
   
-  //Diminui a quantidade daquele ativo na carteira, aumentando o número disponível daquele ativo na corretora e aumentando o saldo do cliente de acordo com o valor da venda
+  //Diminui a quantidade daquele ativo na carteira
   const [decreaseAsset] = await modelInvestimentos.decreaseAssetFromWallet(quantity, clientId, assetId);
   if(decreaseAsset.affectedRows !== 0){
+    //aumenta o número disponível daquele ativo na corretora
     await modelAtivos.increaseAssetsAvailable(quantity, assetId);
+    
+    //aumenta o saldo do cliente de acordo com o valor da venda
     const totalSale = quantity * price;
     await modelConta.increaseCashInWallet(totalSale, clientId);
   }

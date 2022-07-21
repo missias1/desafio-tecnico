@@ -1,9 +1,11 @@
-const modelConta = require('../models/modelConta');
+const modelConta = require('../database/models/modelConta');
 const createErrorObj = require('../utils/createErrorObj')
 
 const increaseCashInWallet = async (value, clientId)=> {
+  //adiciona o valor na conta do cliente
   const [addCash] = await modelConta.increaseCashInWallet(value, clientId);
   
+  //vericia se o depósito não aconteceu
   if(addCash.affectedRows === 0) throw createErrorObj(400, "Deposit failed");
 };
 
@@ -23,7 +25,10 @@ const decreaseCashFromWallet = async (value, clientId)=> {
 };
 
 const getWalletInfoById = async (clientId)=> {
+  //acessa informação da conta pelo id
   const [walletInfo] = await modelConta.getWalletInfoById(clientId);
+
+  //verifica se não recuperou corretamente
   if(!walletInfo) throw createErrorObj(400, "User doesn't exist!");
 
   return walletInfo;
