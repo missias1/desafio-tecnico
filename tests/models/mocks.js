@@ -37,9 +37,17 @@ const WALLET_INFO = {
 	balance: 10000
 }
 
+const USER_INFO = {
+  clientId: '1',
+  name: 'João',
+  email: 'joao@gmail.com',
+  balance: 1000,
+}
+
 module.exports = {
   ARRAY_ASSETS,
   ASSET,
   ASSETS_FROM_CLIENT,
-  WALLET_INFO
+  WALLET_INFO,
+  USER_INFO
 }
