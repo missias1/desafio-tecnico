@@ -32,8 +32,14 @@ const ASSETS_FROM_CLIENT = [
 	},
 ]
 
+const WALLET_INFO = {
+	clientId: 1,
+	balance: 10000
+}
+
 module.exports = {
   ARRAY_ASSETS,
   ASSET,
-  ASSETS_FROM_CLIENT
+  ASSETS_FROM_CLIENT,
+  WALLET_INFO
 }

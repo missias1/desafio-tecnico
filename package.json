@@ -7,7 +7,8 @@
     "restore": "node ./src/restoreDb.js",
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js",
-    "test": "mocha ./tests/**/*$NAME*.test.js --exit"
+    "test": "mocha ./tests/**/**.test.js --exit",
+    "coverage": "nyc npm run test"
   },
   "keywords": [],
   "author": "",
