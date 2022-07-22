@@ -61,22 +61,29 @@ describe('SERVICE - Lista um ativo pelo seu id',()=>{
 
   describe('Id do ativo não existe no banco de dados', ()=> {
     beforeEach(()=> {
-      sinon.stub(modelAtivos, 'getAssetById').resolves(undefined);
+      sinon.stub(modelAtivos, 'getAssetById').resolves([undefined]);
     })
     afterEach(()=>{
       modelAtivos.getAssetById.restore();
     });
 
     const assetId = 100;
-        //CORRIGIR AQUI
-    // it('Verifica se um erro é lançado', async ()=> {
-    //   try{
-    //     await serviceAtivos.getAssetById(assetId);
-    //   } catch (error){
-    //     throw error
-    //   }
-    //   expect(asset).to.Throw;
-    // });
+
+    it('Verifica se um erro é lançado', async ()=> {
+      try{
+        await serviceAtivos.getAssetById(assetId);
+      } catch (error){
+        expect(error).to.be.Throw;
+      }
+    });
+
+    it('Verifica se contém as chaves status e message', async ()=> {
+      try{
+        await serviceAtivos.getAssetById(assetId);
+      } catch (error){
+        expect(error).to.include.all.keys("status", "message")
+      }
+    });
   })
 
 });
@@ -103,13 +110,20 @@ describe('SERVICE - Lista as ações de um determinado cliente',()=>{
 
   describe('Id do cliente não existe no banco de dados', ()=> {
     beforeEach(()=> {
-      sinon.stub(modelAtivos, 'getAssetsFromOneClientById').resolves([]);
+      sinon.stub(modelAtivos, 'getAssetsFromOneClientById').resolves([[]]);
     });
     afterEach(()=>{
       modelAtivos.getAssetsFromOneClientById.restore();
     });
-    //CORRIGIR AQUI
+
     it('Verifica se é lançado um erro', async ()=> {
+      try{
+        await serviceAtivos.getAssetsFromOneClientById(mock.USER_INFO.clientId);
+      } catch (error){
+        expect(error).to.be.Throw
+      }
+    });
+    it('Verifica se contém as chaves status e message', async ()=> {
       try{
         await serviceAtivos.getAssetsFromOneClientById(mock.USER_INFO.clientId);
       } catch (error){
