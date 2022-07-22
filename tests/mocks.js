@@ -44,10 +44,21 @@ const USER_INFO = {
   balance: 1000,
 }
 
+const AFFECTED_ROWS = {
+  affectedRows: 1
+}
+
+const DEPOSIT_INFO = {
+  clientId: 1,
+  value: 1000
+}
+
 module.exports = {
   ARRAY_ASSETS,
   ASSET,
   ASSETS_FROM_CLIENT,
   WALLET_INFO,
-  USER_INFO
+  USER_INFO,
+  AFFECTED_ROWS,
+  DEPOSIT_INFO
 }

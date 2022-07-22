@@ -2,14 +2,15 @@ const sinon = require('sinon');
 const {expect} = require('chai');
 const serviceAtivos = require('../../src/services/serviceAtivos');
 const mock = require('../mocks');
+const modelAtivos = require('../../src/database/models/modelAtivos')
 
 describe('SERVICE - Retorna todas as ações da corretora',()=>{
 
   beforeEach(()=>{
-    sinon.stub(serviceAtivos, 'getAllAssets').resolves(mock.ARRAY_ASSETS);
+    sinon.stub(modelAtivos, 'getAllAssets').resolves(mock.ARRAY_ASSETS);
   });
   afterEach(()=>{
-    serviceAtivos.getAllAssets.restore();
+    modelAtivos.getAllAssets.restore();
   });
     
   it('Verifica se é um array', async ()=> {
@@ -38,10 +39,10 @@ describe('SERVICE - Lista um ativo pelo seu id',()=>{
   
   describe('Id do ativo existe no banco de dados', ()=> {
     beforeEach(()=> {
-      sinon.stub(serviceAtivos, 'getAssetById').resolves(mock.ASSET);
+      sinon.stub(modelAtivos, 'getAssetById').resolves([mock.ASSET]);
     })
     afterEach(()=>{
-      serviceAtivos.getAssetById.restore();
+      modelAtivos.getAssetById.restore();
     });
 
     it('Verifica se retorna um objeto', async ()=> {
@@ -60,29 +61,34 @@ describe('SERVICE - Lista um ativo pelo seu id',()=>{
 
   describe('Id do ativo não existe no banco de dados', ()=> {
     beforeEach(()=> {
-      sinon.stub(serviceAtivos, 'getAssetById').throws;
+      sinon.stub(modelAtivos, 'getAssetById').resolves(undefined);
     })
     afterEach(()=>{
-      serviceAtivos.getAssetById.restore();
+      modelAtivos.getAssetById.restore();
     });
 
     const assetId = 100;
+        //CORRIGIR AQUI
     it('Verifica se um erro é lançado', async ()=> {
-      const asset = await serviceAtivos.getAssetById(assetId);
-      expect(asset).to.throw;
+      try{
+        await serviceAtivos.getAssetById(assetId);
+      } catch (error){
+        throw error
+      }
+      expect(asset).to.Throw;
     });
   })
 
 });
-////////////////////////////
+
 describe('SERVICE - Lista as ações de um determinado cliente',()=>{
   
   describe('Id do cliente existe no banco de dados', ()=>{
     beforeEach(()=> {
-      sinon.stub(serviceAtivos, 'getAssetsFromOneClientById').resolves(mock.ASSETS_FROM_CLIENT);
+      sinon.stub(modelAtivos, 'getAssetsFromOneClientById').resolves(mock.ASSETS_FROM_CLIENT);
     });
     afterEach(()=>{
-      serviceAtivos.getAssetsFromOneClientById.restore();
+      modelAtivos.getAssetsFromOneClientById.restore();
     });
 
     it('Verifica se retorna um array', async ()=> {
@@ -97,52 +103,17 @@ describe('SERVICE - Lista as ações de um determinado cliente',()=>{
 
   describe('Id do cliente não existe no banco de dados', ()=> {
     beforeEach(()=> {
-      sinon.stub(serviceAtivos, 'getAssetsFromOneClientById').throws;
+      sinon.stub(modelAtivos, 'getAssetsFromOneClientById').resolves([]);
     });
     afterEach(()=>{
-      serviceAtivos.getAssetsFromOneClientById.restore();
+      modelAtivos.getAssetsFromOneClientById.restore();
     });
-
+    //CORRIGIR AQUI
     it('Verifica se é lançado um erro', async ()=> {
       const assetsFromClient = await serviceAtivos.getAssetsFromOneClientById(mock.USER_INFO.clientId);
-      expect(assetsFromClient).to.throw;
+      console.log(assetsFromClient)
+      expect(assetsFromClient).to.Throw.toString('User not found');
     });
   });
 
 });
-
-
-// describe('Retorna todas as ações da corretora',()=>{
-
-//   beforeEach(()=>{
-//     sinon.stub(connection, 'execute').resolves(allProducts);
-//   });
-//   afterEach(()=>{
-//     connection.execute.restore();
-//   });
-
-//   describe('SUCESSO', ()=> {
-    
-//     it('', async ()=> {
-
-//     })
-  
-//     it('', async ()=> {
-  
-//     })
-
-//   });
-
-//   describe('FALHA', ()=> {
-    
-//     it('', async ()=> {
-
-//     })
-  
-//     it('', async ()=> {
-  
-//     })
-
-//   })
-
-// })
