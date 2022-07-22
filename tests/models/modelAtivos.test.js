@@ -2,7 +2,7 @@ const sinon = require('sinon');
 const {expect} = require('chai');
 const connection = require('../../src/database/connection');
 const modelAtivos = require('../../src/database/models/modelAtivos');
-const mocks = require('./mocks')
+const mocks = require('../mocks')
 
 
 describe('Retorna todas as ações da corretora ',()=>{

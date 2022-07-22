@@ -2,7 +2,7 @@ const sinon = require('sinon');
 const {expect} = require('chai');
 const connection = require('../../src/database/connection');
 const modelConta = require('../../src/database/models/modelConta')
-const mocks = require('./mocks');
+const mocks = require('../mocks');
 
 describe('Aumenta a quantidade de cash na carteira do cliente',()=>{
 

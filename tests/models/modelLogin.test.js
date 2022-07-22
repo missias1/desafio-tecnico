@@ -2,7 +2,7 @@ const sinon = require('sinon');
 const {expect} = require('chai');
 const connection = require('../../src/database/connection');
 const modelLogin = require('../../src/database/models/modelLogin');
-const mocks = require('./mocks');
+const mocks = require('../mocks');
 
 describe('Procura pelo cliente no banco de dados',()=>{
 
