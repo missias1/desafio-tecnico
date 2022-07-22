@@ -1,5 +1,5 @@
 build:
-  docker:
+  docker-compose:
     web: docker-compose
 run:
   web: node index.js
