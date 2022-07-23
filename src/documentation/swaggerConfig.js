@@ -125,6 +125,96 @@ const swaggerConfig = {
           }
         }
       },
+      "/ativos/client/{clientId}": {
+        get: {
+          summary: "Lista as ações de um determinado cliente a partir do id",
+          description: "Essa rota permite a consulta de todas ações de um cliente pelo id",
+          tags: ["Ativos"],
+          // corrigir a parte da autenticação
+          security: [{bearerAuth: []}],
+          parameters: [{
+            name: "clientId",
+            in: "path",
+            description: "Id do cliente",
+          }],
+          responses: {
+            401: {
+              description: "Unauthorized",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: '"token" is invalid!'
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            400: {
+              description: "Bad Request",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: '"token" is required!'
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            200: {
+              description: "OK",
+              content: {
+                "application/json": {
+                  schema: {
+                    "$ref": "#components/schemas/Array_Assets_Client"
+                  }
+                }
+              }
+            },
+            404: {
+              description: "Not Found",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: "User not found!"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            500: {
+              description: "Internal Server Error",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: "Internal error!"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
     },
       components: {
         schemas: {
