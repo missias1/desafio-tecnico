@@ -23,7 +23,7 @@ const swaggerConfig = {
     paths: {
       "/login": {
         post: {
-          summary: "Aréa de Login",
+          summary: "Área de Login",
           description: "Essa rota permite o usuário fazer o login",
           tags: ["Client"],
           requestBody: {
@@ -69,7 +69,7 @@ const swaggerConfig = {
       "/ativos": {
         get: {
           summary: "Lista todas as ações",
-          description: "Essa rota permite a consulta das ações da corretora",
+          description: "Essa rota lista as ações da corretora",
           tags: ["Ativos"],
             responses: {
               200: {
@@ -88,7 +88,7 @@ const swaggerConfig = {
       "/ativos/{assetId}": {
         get: {
           summary: "Lista uma ação pelo id",
-          description: "Essa rota permite a consulta de uma ação pelo seu id",
+          description: "Essa rota permite a consulta de uma ação pelo id",
           tags: ["Ativos"],
           parameters: [{
             name: "assetId",
@@ -128,9 +128,8 @@ const swaggerConfig = {
       "/ativos/client/{clientId}": {
         get: {
           summary: "Lista as ações de um determinado cliente a partir do id",
-          description: "Essa rota permite a consulta de todas ações de um cliente pelo id",
+          description: "Essa rota permite a consulta de todas ações de um cliente pelo id. Precisa de autenticação.",
           tags: ["Ativos"],
-          // corrigir a parte da autenticação
           security: [{bearerAuth: []}],
           parameters: [{
             name: "clientId",
@@ -218,9 +217,8 @@ const swaggerConfig = {
       "/conta/deposito": {
         post: {
           summary: "Realiza depósito na conta do cliente",
-          description: "Essa rota permite que o cliente faça depósito na sua conta",
+          description: "Essa rota permite que o cliente faça depósito na sua conta. Precisa de autenticação.",
           tags: ["Conta"],
-          // corrigir a parte da autenticação
           security: [{bearerAuth: []}],
           requestBody: {
             content: {
@@ -292,7 +290,7 @@ const swaggerConfig = {
       "/conta/saque": {
         post: {
           summary: "Realiza saque da conta do cliente",
-          description: "Essa rota permite que o cliente faça saque da sua conta",
+          description: "Essa rota permite que o cliente faça saque da sua conta. Precisa de autenticação.",
           tags: ["Conta"],
           // corrigir a parte da autenticação
           security: [{bearerAuth: []}],
@@ -367,7 +365,7 @@ const swaggerConfig = {
       "/conta/{clientId}": {
         get: {
           summary: "Realiza consulta do saldo do cliente pelo id",
-          description: "Essa rota permite listar o saldo do cliente pelo id",
+          description: "Essa rota permite listar o saldo do cliente pelo id. Precisa de autenticação.",
           tags: ["Conta"],
           // corrigir a parte da autenticação
           security: [{bearerAuth: []}],
@@ -433,7 +431,7 @@ const swaggerConfig = {
       "/investimentos/comprar": {
         get: {
           summary: "Realiza compra de ações, adicionando-as na carteira do cliente",
-          description: "Essa rota permite que o cliente faça aquisição de novos ativos",
+          description: "Essa rota permite que o cliente faça aquisição de novos ativos. Precisa de autenticação.",
           tags: ["Investimentos"],
           // corrigir a parte da autenticação
           security: [{bearerAuth: []}],
@@ -499,7 +497,7 @@ const swaggerConfig = {
       "/investimentos/vender": {
         get: {
           summary: "Realiza venda de ações, removendo-as da carteira do cliente",
-          description: "Essa rota permite que o cliente venda suas ações",
+          description: "Essa rota permite que o cliente venda suas ações. Precisa de autenticação.",
           tags: ["Investimentos"],
           // corrigir a parte da autenticação
           security: [{bearerAuth: []}],
@@ -588,33 +586,11 @@ const swaggerConfig = {
               }
             }
           },
-          Mensagem1: {
-            type: "object",
-            properties: {
-              token: {
-                type: "string"
-              }
-            },
-            example: {
-              message: "Mensagem 1"
-            }
-          },
-          Mensagem2: {
-            type: "object",
-            properties: {
-              token: {
-                type: "string"
-              }
-            },
-            example: {
-              message: "Mensagem 2"
-            }
-          },
           Array_Assets: {
             type: "object",
             properties: {
               assetId: {
-                type: "number"
+                type: "integer"
               },
               nameAsset: {
                 type: "string"
@@ -639,7 +615,7 @@ const swaggerConfig = {
             type: "obejct",
             properties: {
               assetId: {
-                type: "number"
+                type: "integer"
               },
               nameAsset: {
                 type: "string"
@@ -658,10 +634,10 @@ const swaggerConfig = {
             type: "object",
             properties: {
               clientId: {
-                type: "number"
+                type: "integer"
               },
               assetId: {
-                type: "number"
+                type: "integer"
               },
               price: {
                 type: "number"
@@ -685,7 +661,7 @@ const swaggerConfig = {
             type: "object",
             properties: {
               clientId: {
-                type: "number"
+                type: "integer"
               },
               value: {
                 type: "number"
@@ -700,7 +676,7 @@ const swaggerConfig = {
             type: "object",
             properties: {
               clientId: {
-                type: "number"
+                type: "integer"
               },
               value: {
                 type: "number"
@@ -715,7 +691,7 @@ const swaggerConfig = {
             type: "object",
             properties: {
               clientId: {
-                type: "number"
+                type: "integer"
               },
               balance: {
                 type: "number"
@@ -733,10 +709,10 @@ const swaggerConfig = {
                 type: "number"
               },
               clientId: {
-                type: "number"
+                type: "integer"
               },
               assetId: {
-                type: "number"
+                type: "integer"
               },
           },
             example: {
@@ -752,10 +728,10 @@ const swaggerConfig = {
                 type: "number"
               },
               clientId: {
-                type: "number"
+                type: "integer"
               },
               assetId: {
-                type: "number"
+                type: "integer"
               },
           },
             example: {
@@ -796,7 +772,7 @@ const swaggerConfig = {
         }
       },
     },
-  apis: ["./src/routes/routeLogin/index.js", "./src/routes/routesAtivos/index.js"],
+  apis: ["./src/routes/index.js", ],
 }
 
 module.exports = swaggerConfig;
