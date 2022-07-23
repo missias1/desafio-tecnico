@@ -36,7 +36,10 @@ const WALLET_INFO = {
 	clientId: 1,
 	balance: 10000
 }
-
+const LOGIN = {
+  email: "pedro@gmail.com",
+  password: "123456"
+}
 const USER_INFO = {
   clientId: '1',
   name: 'João',
@@ -62,7 +65,22 @@ const WITHDRAW_INFO = {
   value: 2000
 }
 
+const BUY_ASSET = {
+  quantity: 25,
+  clientId: 1,
+  assetId: 2
+}
+
+const SELL_ASSET = {
+  quantity: 50,
+  clientId: 2,
+  assetId: 3,
+}
+
+const TOKEN = { token: "tokensupersecreto" }
+
 const BIG_VALUE = 100000
+
 const SHORT_VALUE = 100
 
 module.exports = {
@@ -76,5 +94,9 @@ module.exports = {
   DEPOSIT_INFO,
   BIG_VALUE,
   SHORT_VALUE,
-  WITHDRAW_INFO
+  WITHDRAW_INFO,
+  BUY_ASSET,
+  SELL_ASSET,
+  LOGIN,
+  TOKEN
 }

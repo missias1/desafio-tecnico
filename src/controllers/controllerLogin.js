@@ -4,7 +4,7 @@ const findClient = async (req, res)=> {
   const {email, password} = req.body;
 
   const token = await serviceLogin.findClient(email, password);
-  res.status(200).json({token});
+  res.status(201).json(token);
 };
 
 module.exports = {
