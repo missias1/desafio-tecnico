@@ -41,17 +41,24 @@ const USER_INFO = {
   clientId: '1',
   name: 'João',
   email: 'joao@gmail.com',
-  balance: 1000,
+  balance: 10000,
 }
 
 const AFFECTED_ROWS = {
   affectedRows: 1
 }
 
+const NOT_AFFECTED_ROWS = {
+  affectedRows: 0
+}
+
 const DEPOSIT_INFO = {
   clientId: 1,
   value: 1000
 }
+
+const BIG_VALUE = 100000
+const SHORT_VALUE = 100
 
 module.exports = {
   ARRAY_ASSETS,
@@ -60,5 +67,8 @@ module.exports = {
   WALLET_INFO,
   USER_INFO,
   AFFECTED_ROWS,
-  DEPOSIT_INFO
+  NOT_AFFECTED_ROWS,
+  DEPOSIT_INFO,
+  BIG_VALUE,
+  SHORT_VALUE
 }
