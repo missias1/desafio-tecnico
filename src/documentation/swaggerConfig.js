@@ -512,6 +512,75 @@ const swaggerConfig = {
           }
         }
       },
+      "/investimentos/vender": {
+        get: {
+          summary: "Realiza venda de ações, removendo-as da carteira do cliente",
+          description: "Essa rota permite que o cliente venda suas ações",
+          tags: ["Investimentos"],
+          // corrigir a parte da autenticação
+          security: [{bearerAuth: []}],
+          responses: {
+            401: {
+              description: "Unauthorized",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: '"token" is invalid!'
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            400: {
+              description: "Bad Request",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: 'You can not sale more assets than you have!'
+                      }
+                    },
+                  },
+                },
+              }
+            },
+            201: {
+              description: "OK",
+              content: {
+                "application/json": {
+                  schema: {
+                    "$ref": "#/components/schemas/Sell_Assets",
+                  }
+                }
+              }
+            },
+            500: {
+              description: "Internal Server Error",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: "Internal error!"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
     },
       components: {
         schemas: {
@@ -655,6 +724,25 @@ const swaggerConfig = {
             },
           },
           Buy_Assets: {
+            type: "object",
+            properties: {
+              quantity: {
+                type: "number"
+              },
+              clientId: {
+                type: "number"
+              },
+              assetId: {
+                type: "number"
+              },
+          },
+            example: {
+              quantity: 70,
+              clientId: 1,
+              assetId: 3
+            },
+          },
+          Sell_Assets: {
             type: "object",
             properties: {
               quantity: {

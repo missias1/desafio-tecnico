@@ -36,7 +36,7 @@ const decreaseAssetFromWallet = async (quantity, clientId, assetId)=> {
   const { quantityAsset, price } = arrAssets.find((obj)=> obj.assetId = assetId);
 
   //verifica se a quantidade a ser vendida é maior que a disponível na carteira
-  if(quantity > quantityAsset) throw createErrorObj(400, `You have ${quantityAsset} assets and you can not sale more assets than you have!`)
+  if(quantity > quantityAsset) throw createErrorObj(400, 'You can not sale more assets than you have!')
   
   //Diminui a quantidade daquele ativo na carteira
   const [decreaseAsset] = await modelInvestimentos.decreaseAssetFromWallet(quantity, clientId, assetId);
