@@ -13,12 +13,12 @@ const swaggerConfig = {
 
     },
     servers: [{
-      url: "http://localhost:3001",
+      url: "http://localhost:3000",
       description: "Servidor local"
     },
     {
-      url: "http://localhost:3001",
-      description: "API de produção"
+      url: "https://missias1-desafio-tecnico.herokuapp.com/",
+      description: "Deploy da aplicação"
     }],
     paths: {
       "/login": {
