@@ -70,5 +70,5 @@ module.exports = {
   NOT_AFFECTED_ROWS,
   DEPOSIT_INFO,
   BIG_VALUE,
-  SHORT_VALUE
+  SHORT_VALUE,
 }

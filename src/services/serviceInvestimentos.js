@@ -7,7 +7,7 @@ const increaseAssetInWallet = async (quantity, clientId, assetId)=> {
   //verifica se o ativo existe na carteira, adicionando-o em caso negativo
   const arrAssets = await modelAtivos.getAssetsFromOneClientById(clientId);
   const hasAssetInWallet = arrAssets.some((obj)=> obj.assetId === assetId);
-  if(!hasAssetInWallet) await modelInvestimentos.createAssetInWallet(assetId, clientId, quantity);
+  if(!hasAssetInWallet) return modelInvestimentos.createAssetInWallet(assetId, clientId, quantity);
 
   //verifica a quantidade de ativos disponiveis, antes de registrar a compra
   const [asset] = await modelAtivos.getAssetById(assetId);
