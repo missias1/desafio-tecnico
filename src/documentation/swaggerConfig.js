@@ -53,7 +53,7 @@ const swaggerConfig = {
                 }
               },
               201: {
-                description: "OK",
+                description: "Created",
                 content: {
                   "application/json":{
                     schema: {
@@ -175,7 +175,10 @@ const swaggerConfig = {
               content: {
                 "application/json": {
                   schema: {
-                    "$ref": "#components/schemas/Array_Assets_Client"
+                    type: "array",
+                    items: {
+                      "$ref": "#components/schemas/Array_Assets_Client"
+                    }
                   }
                 }
               }
@@ -192,6 +195,84 @@ const swaggerConfig = {
                         example: "User not found!"
                       }
                     }
+                  }
+                }
+              }
+            },
+            500: {
+              description: "Internal Server Error",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: "Internal error!"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/conta/deposito": {
+        post: {
+          summary: "Realiza depósito na conta do cliente",
+          description: "Essa rota permite a consulta de todas ações de um cliente pelo id",
+          tags: ["Conta"],
+          // corrigir a parte da autenticação
+          security: [{bearerAuth: []}],
+          requestBody: {
+            content: {
+              "application/json": {
+                schema: {
+                  "$ref": "#/components/schemas/Deposit"
+                  }
+                }
+              }
+            },
+          responses: {
+            401: {
+              description: "Unauthorized",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: '"token" is invalid!'
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            400: {
+              description: "Bad Request",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: 'You do not have this value in your account!'
+                      }
+                    }
+                  }
+                },
+              }
+            },
+            201: {
+              description: "Created",
+              content: {
+                "application/json": {
+                  schema: {
+                    "$ref": "#components/schemas/Deposit"
                   }
                 }
               }
@@ -243,7 +324,7 @@ const swaggerConfig = {
           },
           Array_Assets: {
             type: "object",
-            properties: [{
+            properties: {
               assetId: {
                 type: "number"
               },
@@ -253,7 +334,7 @@ const swaggerConfig = {
               price: {
                 type: "number"
               }
-          }],
+          },
             example: [{
               assetId: 1,
               nameAsset: "ITSA4",
@@ -287,7 +368,7 @@ const swaggerConfig = {
           },
           Array_Assets_Client: {
             type: "object",
-            properties: [{
+            properties: {
               clientId: {
                 type: "number"
               },
@@ -303,22 +384,29 @@ const swaggerConfig = {
               quantity: {
                 type: "number"
               }
-          }],
-            example: [{
+          },
+            example: {
               clientId: 1,
               assetId: 2,
               price: 8.35,
               nameAsset: "ITSA4",
               quantityAsset: 100
             },
-            {
+          },
+          Deposit: {
+            type: "object",
+            properties: {
+              clientId: {
+                type: "number"
+              },
+              value: {
+                type: "number"
+              },
+          },
+            example: {
               clientId: 1,
-              assetId: 2,
-              price: 54.40,
-              nameAsset: "RENT3",
-              quantityAsset: 50
-            }
-          ]
+              value: 1000
+            },
           },
         },
         securitySchemes: {
