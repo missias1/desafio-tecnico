@@ -338,10 +338,10 @@ const swaggerConfig = {
                     properties: {
                       message: {
                         type: "string",
-                        example: '"token" is required!'
+                        example: 'You do not have this value in your account!'
                       }
-                    }
-                  }
+                    },
+                  },
                 },
               }
             },
@@ -351,6 +351,75 @@ const swaggerConfig = {
                 "application/json": {
                   schema: {
                     "$ref": "#/components/schemas/Withdraw"
+                  }
+                }
+              }
+            },
+            500: {
+              description: "Internal Server Error",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: "Internal error!"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/conta/{clientId}": {
+        get: {
+          summary: "Realiza consulta do saldo do cliente pelo id",
+          description: "Essa rota permite listar o saldo do cliente pelo id",
+          tags: ["Conta"],
+          // corrigir a parte da autenticação
+          security: [{bearerAuth: []}],
+          responses: {
+            401: {
+              description: "Unauthorized",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: '"token" is invalid!'
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            400: {
+              description: "Bad Request",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: '"token" is required!'
+                      }
+                    },
+                  },
+                },
+              }
+            },
+            201: {
+              description: "OK",
+              content: {
+                "application/json": {
+                  schema: {
+                    "$ref": "#/components/schemas/Wallet"
                   }
                 }
               }
@@ -493,6 +562,21 @@ const swaggerConfig = {
                 type: "number"
               },
               value: {
+                type: "number"
+              },
+          },
+            example: {
+              clientId: 1,
+              value: 1000
+            },
+          },
+          Wallet: {
+            type: "object",
+            properties: {
+              clientId: {
+                type: "number"
+              },
+              balance: {
                 type: "number"
               },
           },
