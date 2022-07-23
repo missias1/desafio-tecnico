@@ -3,7 +3,7 @@ const connection = require('../connection');
 
 const getAllAssets = async ()=> {
   const [assets] = await connection.execute(
-    `SELECT asset_id, name_asset, price FROM DesafioTecnico.assets;`
+    `SELECT asset_id as assetId, name_asset as nameAsset, price FROM DesafioTecnico.assets;`
     )
     return assets;
 };

@@ -4,7 +4,7 @@ const controllerLogin = require('../../src/controllers/controllerLogin');
 const serviceLogin = require('../../src/services/serviceLogin');
 const mocks = require('../mocks');
 
-describe.only('CONTROLLER - Permite o cliente fazer o login',()=>{
+describe('CONTROLLER - Permite o cliente fazer o login',()=>{
   const req = {};
   const res = {}
 

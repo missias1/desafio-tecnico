@@ -18,7 +18,7 @@ describe('SERVICE - Procura pelo cliente que corresponde aos dados',()=>{
     
     it('Verifica se retorna uma string', async ()=> {
       const client = await serviceLogin.findClient(mocks.USER_INFO.email, password);
-      expect(client).to.be.a('string');
+      expect(client).to.be.an('object');
     });
 
   });

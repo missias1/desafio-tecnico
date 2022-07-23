@@ -65,8 +65,27 @@ const swaggerConfig = {
               }
             }
           }
+        },
+      "/ativos": {
+        get: {
+          summary: "Lista todas as ações",
+          description: "Essa rota permite a consulta das ações da corretora",
+          tags: ["Assets"],
+            responses: {
+              200: {
+                description: "OK",
+                content: {
+                  "application/json": {
+                    schema: {
+                      "$ref": "#components/schemas/Assets"
+                    }
+                  }
+                }
+              }
+            }
         }
       },
+    },
       components: {
         schemas: {
           Login: {
@@ -91,6 +110,32 @@ const swaggerConfig = {
                 type: "string"
               }
             }
+          },
+          Assets: {
+            type: "obejct",
+            properties: [{
+              assetId: {
+                type: "number"
+              },
+              nameAsset: {
+                type: "string"
+              },
+              price: {
+                type: "number"
+              }
+          }],
+            example: [{
+              assetId: 1,
+              nameAsset: "ITSA4",
+              price: 8.35
+            },
+            {
+              assetId: 2,
+              nameAsset: "RENT3",
+              price: 54.40
+            }
+
+          ]
           }
         },
         securitySchemes: {
