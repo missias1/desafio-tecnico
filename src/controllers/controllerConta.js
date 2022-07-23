@@ -4,14 +4,14 @@ const increaseCashInWallet = async (req, res)=> {
   const { value, clientId } = req.body;
 
   await serviceConta.increaseCashInWallet(value, clientId);
-  res.status(200).json({ message: `Success deposit of R$${value}!`});
+  res.status(201).json({ clientId, value });
 };
 
 const decreaseCashFromWallet = async (req, res)=> {
   const { value, clientId } = req.body;
 
   await serviceConta.decreaseCashFromWallet(value, clientId);
-  res.status(200).json({ message: `Success withdraw of R$${value}!`});
+  res.status(201).json({ clientId, value });
 };
 
 const getWalletInfoById = async (req, res)=> {

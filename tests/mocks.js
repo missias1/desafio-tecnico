@@ -57,6 +57,11 @@ const DEPOSIT_INFO = {
   value: 1000
 }
 
+const WITHDRAW_INFO = {
+  clientId: 1,
+  value: 2000
+}
+
 const BIG_VALUE = 100000
 const SHORT_VALUE = 100
 
@@ -71,4 +76,5 @@ module.exports = {
   DEPOSIT_INFO,
   BIG_VALUE,
   SHORT_VALUE,
+  WITHDRAW_INFO
 }

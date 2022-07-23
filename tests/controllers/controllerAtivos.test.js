@@ -5,7 +5,7 @@ const controllerAtivos = require('../../src/controllers/controllerAtivos');
 const serviceAtivos = require('../../src/services/serviceAtivos');
 
 
-describe.only('CONTROLLER - Lista todos os ativos ',()=>{
+describe('CONTROLLER - Lista todos os ativos ',()=>{
   const req = {};
   const res = {}
 
@@ -32,7 +32,7 @@ describe.only('CONTROLLER - Lista todos os ativos ',()=>{
 
 });
 
-describe.only('CONTROLLER - Lista determinado ativo pelo seu id',()=>{
+describe('CONTROLLER - Lista determinado ativo pelo seu id',()=>{
   const req = {};
   const res = {}
 
@@ -61,7 +61,7 @@ describe.only('CONTROLLER - Lista determinado ativo pelo seu id',()=>{
 
 });
 
-describe.only('CONTROLLER - Lista ativos de um determinado cliente pelo o id',()=>{
+describe('CONTROLLER - Lista ativos de um determinado cliente pelo o id',()=>{
   const req = {};
   const res = {}
 
