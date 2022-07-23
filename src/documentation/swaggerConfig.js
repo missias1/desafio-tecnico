@@ -221,7 +221,7 @@ const swaggerConfig = {
       "/conta/deposito": {
         post: {
           summary: "Realiza depósito na conta do cliente",
-          description: "Essa rota permite a consulta de todas ações de um cliente pelo id",
+          description: "Essa rota permite que o cliente faça depósito na sua conta",
           tags: ["Conta"],
           // corrigir a parte da autenticação
           security: [{bearerAuth: []}],
@@ -260,7 +260,7 @@ const swaggerConfig = {
                     properties: {
                       message: {
                         type: "string",
-                        example: 'You do not have this value in your account!'
+                        example: '"token" is required!'
                       }
                     }
                   }
@@ -273,6 +273,84 @@ const swaggerConfig = {
                 "application/json": {
                   schema: {
                     "$ref": "#components/schemas/Deposit"
+                  }
+                }
+              }
+            },
+            500: {
+              description: "Internal Server Error",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: "Internal error!"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/conta/saque": {
+        post: {
+          summary: "Realiza saque da conta do cliente",
+          description: "Essa rota permite que o cliente faça saque da sua conta",
+          tags: ["Conta"],
+          // corrigir a parte da autenticação
+          security: [{bearerAuth: []}],
+          requestBody: {
+            content: {
+              "application/json": {
+                schema: {
+                  "$ref": "#/components/schemas/Withdraw"
+                  }
+                }
+              }
+            },
+          responses: {
+            401: {
+              description: "Unauthorized",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: '"token" is invalid!'
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            400: {
+              description: "Bad Request",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: '"token" is required!'
+                      }
+                    }
+                  }
+                },
+              }
+            },
+            201: {
+              description: "Created",
+              content: {
+                "application/json": {
+                  schema: {
+                    "$ref": "#/components/schemas/Withdraw"
                   }
                 }
               }
@@ -394,6 +472,21 @@ const swaggerConfig = {
             },
           },
           Deposit: {
+            type: "object",
+            properties: {
+              clientId: {
+                type: "number"
+              },
+              value: {
+                type: "number"
+              },
+          },
+            example: {
+              clientId: 1,
+              value: 1000
+            },
+          },
+          Withdraw: {
             type: "object",
             properties: {
               clientId: {
