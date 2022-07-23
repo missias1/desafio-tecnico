@@ -106,8 +106,8 @@ const swaggerConfig = {
                 }
               }
             },
-            400: {
-              description: "NOT FOUND",
+            404: {
+              description: "Not Found",
               content: {
                 "application/json": {
                   schema: {
@@ -143,13 +143,10 @@ const swaggerConfig = {
               content: {
                 "application/json": {
                   schema: {
-                    type: "object",
-                    properties: {
-                      message: {
-                        type: "string",
-                        example: '"token" is invalid!'
-                      }
-                    }
+                    oneOf: [
+                      {"$ref": "#/components/schemas/Error401A"},
+                      {"$ref": "#/components/schemas/Error401B"}
+                    ]
                   }
                 }
               }
@@ -240,13 +237,10 @@ const swaggerConfig = {
               content: {
                 "application/json": {
                   schema: {
-                    type: "object",
-                    properties: {
-                      message: {
-                        type: "string",
-                        example: '"token" is invalid!'
-                      }
-                    }
+                    oneOf: [
+                      {"$ref": "#/components/schemas/Error401A"},
+                      {"$ref": "#/components/schemas/Error401B"}
+                    ]
                   }
                 }
               }
@@ -256,7 +250,6 @@ const swaggerConfig = {
               content: {
                 "application/json": {
                   schema: {
-                    type: "object",
                     properties: {
                       message: {
                         type: "string",
@@ -318,13 +311,10 @@ const swaggerConfig = {
               content: {
                 "application/json": {
                   schema: {
-                    type: "object",
-                    properties: {
-                      message: {
-                        type: "string",
-                        example: '"token" is invalid!'
-                      }
-                    }
+                    oneOf: [
+                      {"$ref": "#/components/schemas/Error401A"},
+                      {"$ref": "#/components/schemas/Error401B"}
+                    ]
                   }
                 }
               }
@@ -387,13 +377,10 @@ const swaggerConfig = {
               content: {
                 "application/json": {
                   schema: {
-                    type: "object",
-                    properties: {
-                      message: {
-                        type: "string",
-                        example: '"token" is invalid!'
-                      }
-                    }
+                    oneOf: [
+                      {"$ref": "#/components/schemas/Error401A"},
+                      {"$ref": "#/components/schemas/Error401B"}
+                    ]
                   }
                 }
               }
@@ -456,13 +443,10 @@ const swaggerConfig = {
               content: {
                 "application/json": {
                   schema: {
-                    type: "object",
-                    properties: {
-                      message: {
-                        type: "string",
-                        example: '"token" is invalid!'
-                      }
-                    }
+                    oneOf: [
+                      {"$ref": "#/components/schemas/Error401A"},
+                      {"$ref": "#/components/schemas/Error401B"}
+                    ]
                   }
                 }
               }
@@ -525,13 +509,10 @@ const swaggerConfig = {
               content: {
                 "application/json": {
                   schema: {
-                    type: "object",
-                    properties: {
-                      message: {
-                        type: "string",
-                        example: '"token" is invalid!'
-                      }
-                    }
+                    oneOf: [
+                      {"$ref": "#/components/schemas/Error401A"},
+                      {"$ref": "#/components/schemas/Error401B"}
+                    ]
                   }
                 }
               }
@@ -605,6 +586,28 @@ const swaggerConfig = {
               token: {
                 type: "string"
               }
+            }
+          },
+          Mensagem1: {
+            type: "object",
+            properties: {
+              token: {
+                type: "string"
+              }
+            },
+            example: {
+              message: "Mensagem 1"
+            }
+          },
+          Mensagem2: {
+            type: "object",
+            properties: {
+              token: {
+                type: "string"
+              }
+            },
+            example: {
+              message: "Mensagem 2"
             }
           },
           Array_Assets: {
@@ -759,6 +762,28 @@ const swaggerConfig = {
               quantity: 70,
               clientId: 1,
               assetId: 3
+            },
+          },
+          Error401A: {
+            type: "object",
+            properties: {
+              message: {
+                type: "string"
+              },
+          },
+            example: {
+              message: "Action not allowed!"
+            },
+          },
+          Error401B: {
+            type: "object",
+            properties: {
+              message: {
+                type: "string"
+              },
+          },
+            example: {
+              message: '"token" is invalid'
             },
           },
         },
