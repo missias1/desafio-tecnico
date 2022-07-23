@@ -4,7 +4,7 @@ const connection = require('../../src/database/connection');
 const modelLogin = require('../../src/database/models/modelLogin');
 const mocks = require('../mocks');
 
-describe('Procura pelo cliente no banco de dados',()=>{
+describe('MODEL - Procura pelo cliente no banco de dados',()=>{
 
   describe('Usuário é encontrado com sucesso', ()=> {
 
@@ -50,7 +50,7 @@ describe('Procura pelo cliente no banco de dados',()=>{
 
 });
 
-describe('Procura pelo cliente no banco de dados por meio do id',()=>{
+describe('MODEL - Procura pelo cliente no banco de dados por meio do id',()=>{
 
   describe('Usuário é encontrado com sucesso', ()=> {
 

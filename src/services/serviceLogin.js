@@ -12,7 +12,7 @@ const findClient = async (email, password)=> {
   //acessa os dados retornados, passando-os para gerar o token
   const { client_id, name } = client;
   const token = generateToken({ client_id, name, email })
-  return token;
+  return {token};
 };
 
 module.exports = {

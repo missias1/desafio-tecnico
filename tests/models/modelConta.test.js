@@ -4,7 +4,7 @@ const connection = require('../../src/database/connection');
 const modelConta = require('../../src/database/models/modelConta')
 const mocks = require('../mocks');
 
-describe('Aumenta a quantidade de cash na carteira do cliente',()=>{
+describe('MODEL - Aumenta a quantidade de cash na carteira do cliente',()=>{
 
   beforeEach(()=>{
     sinon.stub(connection, 'execute').resolves([[],[]]);
@@ -20,7 +20,7 @@ describe('Aumenta a quantidade de cash na carteira do cliente',()=>{
 
   });
   
-describe('Diminui a quantidade de cash na carteira do cliente',()=>{
+describe('MODEL - Diminui a quantidade de cash na carteira do cliente',()=>{
 
   beforeEach(()=>{
     sinon.stub(connection, 'execute').resolves([[],[]]);
@@ -36,7 +36,7 @@ describe('Diminui a quantidade de cash na carteira do cliente',()=>{
 
 });
   
-describe('Lista informações da conta do cliente',()=>{
+describe('MODEL - Lista informações da conta do cliente',()=>{
 
   beforeEach(()=>{
     sinon.stub(connection, 'execute').resolves([mocks.WALLET_INFO]);

@@ -5,7 +5,7 @@ const modelAtivos = require('../../src/database/models/modelAtivos');
 const mocks = require('../mocks')
 
 
-describe('Retorna todas as ações da corretora ',()=>{
+describe('MODEL - Retorna todas as ações da corretora ',()=>{
 
   beforeEach(()=>{
     sinon.stub(connection, 'execute').resolves([mocks.ARRAY_ASSETS]);
@@ -37,7 +37,7 @@ describe('Retorna todas as ações da corretora ',()=>{
 
 });
 
-describe('Diminui a quantidade de ativos disponíveis na corretora',()=>{
+describe('MODEL - Diminui a quantidade de ativos disponíveis na corretora',()=>{
 
   beforeEach(()=> {
     sinon.stub(connection, 'execute').resolves([[],[]]);
@@ -53,7 +53,7 @@ describe('Diminui a quantidade de ativos disponíveis na corretora',()=>{
     });
 });
 
-describe('Aumenta a quantidade de ativos disponíveis na corretora',()=>{
+describe('MODEL - Aumenta a quantidade de ativos disponíveis na corretora',()=>{
 
   beforeEach(()=> {
     sinon.stub(connection, 'execute').resolves([[],[]]);
@@ -69,7 +69,7 @@ describe('Aumenta a quantidade de ativos disponíveis na corretora',()=>{
     });
 });
 
-describe('Lista um ativo pelo seu id',()=>{
+describe('MODEL - Lista um ativo pelo seu id',()=>{
 
   beforeEach(()=> {
     sinon.stub(connection, 'execute').resolves([[mocks.ASSET]]);
@@ -90,7 +90,7 @@ describe('Lista um ativo pelo seu id',()=>{
 });
 
 
-describe('Lista as ações de um determinado cliente',()=>{
+describe('MODEL - Lista as ações de um determinado cliente',()=>{
 
   beforeEach(()=> {
     sinon.stub(connection, 'execute').resolves([[mocks.ASSETS_FROM_CLIENT]]);

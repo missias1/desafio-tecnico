@@ -3,7 +3,7 @@ const {expect} = require('chai');
 const connection = require('../../src/database/connection');
 const modelInvestimentos = require('../../src/database/models/modelInvestimentos');
 
-describe('Aumenta a quantidade de ativos na carteira do cliente',()=>{
+describe('MODEL - Aumenta a quantidade de ativos na carteira do cliente',()=>{
 
   beforeEach(()=>{
     sinon.stub(connection, 'execute').resolves([[],[]]);
@@ -19,7 +19,7 @@ describe('Aumenta a quantidade de ativos na carteira do cliente',()=>{
 
 });
 
-describe('Diminui a quantidade de ativos na carteira do cliente',()=>{
+describe('MODEL - Diminui a quantidade de ativos na carteira do cliente',()=>{
 
   beforeEach(()=>{
     sinon.stub(connection, 'execute').resolves([[],[]]);
@@ -35,7 +35,7 @@ describe('Diminui a quantidade de ativos na carteira do cliente',()=>{
 
 });
 
-describe('Cria ativo na carteira do cliente',()=>{
+describe('MODEL - Cria ativo na carteira do cliente',()=>{
 
   beforeEach(()=>{
     sinon.stub(connection, 'execute').resolves([[],[]]);
