@@ -22,7 +22,7 @@ const increaseAssetsAvailable = async (quantity, assetId)=> connection.execute(
   
 const getAssetById = async (id)=> {
     const [asset] = await connection.execute(
-      `SELECT asset_id AS assetId, quantity_available AS quantityAvailable, price
+      `SELECT asset_id AS assetId, name_asset AS nameAsset, quantity_available AS quantityAvailable, price
       FROM DesafioTecnico.assets WHERE asset_id = ?;`, [id]
     );
     return asset;
@@ -30,7 +30,7 @@ const getAssetById = async (id)=> {
 
 const getAssetsFromOneClientById = async (clientId)=> {
   const [clientAssets] = await connection.execute(
-    `SELECT t1.client_id AS clientId, t2.asset_id AS assetId, t3.price,
+    `SELECT t1.client_id AS clientId, t2.asset_id AS assetId, t3.price, t3.name_asset AS nameAsset,
     t2.quantity_asset AS quantityAsset FROM DesafioTecnico.clients AS t1
     INNER JOIN DesafioTecnico.assets_clients AS t2
     INNER JOIN DesafioTecnico.assets AS t3

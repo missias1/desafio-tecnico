@@ -70,19 +70,59 @@ const swaggerConfig = {
         get: {
           summary: "Lista todas as ações",
           description: "Essa rota permite a consulta das ações da corretora",
-          tags: ["Assets"],
+          tags: ["Ativos"],
             responses: {
               200: {
                 description: "OK",
                 content: {
                   "application/json": {
                     schema: {
-                      "$ref": "#components/schemas/Assets"
+                      "$ref": "#components/schemas/Array_Assets"
                     }
                   }
                 }
               }
             }
+        }
+      },
+      "/ativos/{assetId}": {
+        get: {
+          summary: "Lista uma ação pelo id",
+          description: "Essa rota permite a consulta de uma ação pelo seu id",
+          tags: ["Ativos"],
+          parameters: [{
+            name: "assetId",
+            in: "path",
+            description: "Id do ativo",
+          }],
+          responses: {
+            200: {
+              description: "OK",
+              content: {
+                "application/json": {
+                  schema: {
+                    "$ref": "#components/schemas/Asset"
+                  }
+                }
+              }
+            },
+            400: {
+              description: "NOT FOUND",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: "This asset does not exist!"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       },
     },
@@ -111,8 +151,8 @@ const swaggerConfig = {
               }
             }
           },
-          Assets: {
-            type: "obejct",
+          Array_Assets: {
+            type: "object",
             properties: [{
               assetId: {
                 type: "number"
@@ -134,9 +174,62 @@ const swaggerConfig = {
               nameAsset: "RENT3",
               price: 54.40
             }
-
           ]
-          }
+          },
+          Asset: {
+            type: "obejct",
+            properties: {
+              assetId: {
+                type: "number"
+              },
+              nameAsset: {
+                type: "string"
+              },
+              price: {
+                type: "number"
+              }
+          },
+            example: {
+              assetId: 1,
+              nameAsset: "ITSA4",
+              price: 8.35
+            },
+          },
+          Array_Assets_Client: {
+            type: "object",
+            properties: [{
+              clientId: {
+                type: "number"
+              },
+              assetId: {
+                type: "number"
+              },
+              price: {
+                type: "number"
+              },
+              nameAsset: {
+                type: "string"
+              },
+              quantity: {
+                type: "number"
+              }
+          }],
+            example: [{
+              clientId: 1,
+              assetId: 2,
+              price: 8.35,
+              nameAsset: "ITSA4",
+              quantityAsset: 100
+            },
+            {
+              clientId: 1,
+              assetId: 2,
+              price: 54.40,
+              nameAsset: "RENT3",
+              quantityAsset: 50
+            }
+          ]
+          },
         },
         securitySchemes: {
           bearerAuth: {

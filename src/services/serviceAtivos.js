@@ -13,7 +13,7 @@ const getAssetById = async (assetId)=> {
   const [asset] = await modelAtivos.getAssetById(assetId);
 
   //verifica se não foi encontrado
-  if(!asset) throw createErrorObj(400, "This asset does not exist!")
+  if(!asset) throw createErrorObj(404, "This asset does not exist!")
   return asset;
 };
 
@@ -22,7 +22,7 @@ const getAssetsFromOneClientById = async (clientId)=> {
   const clientAssets = await modelAtivos.getAssetsFromOneClientById(clientId);
 
   //verifica se não foi recuperado
-  if(clientAssets.length === 0) throw createErrorObj(400, "User not found")
+  if(clientAssets.length === 0) throw createErrorObj(404, "User not found")
   return clientAssets;
 };
 
