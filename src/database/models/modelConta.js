@@ -19,8 +19,13 @@ const getWalletInfoById = async (clientId)=> {
   return client;
 }
 
+const deleteClient = async (clientId)=> connection.execute(
+  `DELETE FROM heroku_3a2342a6c76f266.clients WHERE = ?;`, [clientId]
+);
+
 module.exports = {
   increaseCashInWallet,
   decreaseCashFromWallet,
   getWalletInfoById,
+  deleteClient
 }

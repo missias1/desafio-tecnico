@@ -6,7 +6,7 @@ const serviceRegister = require('../../src/services/serviceRegister');
 const mocks = require('../mocks');
 
 
-describe.only('SERVICE - Cria conta de novo cliente ',()=>{
+describe('SERVICE - Cria conta de novo cliente ',()=>{
 
   describe('Conta é criada com sucesso', ()=> {
     beforeEach(()=>{

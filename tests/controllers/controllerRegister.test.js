@@ -4,7 +4,7 @@ const controllerRegister = require('../../src/controllers/controllerRegister');
 const serviceRegister = require('../../src/services/serviceRegister');
 const mocks = require('../mocks');
 
-describe.only('CONTROLLER - Realiza cadastro de novo cliente',()=>{
+describe('CONTROLLER - Realiza cadastro de novo cliente',()=>{
   const req = {};
   const res = {}
 

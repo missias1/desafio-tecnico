@@ -55,3 +55,19 @@ describe('MODEL - Lista informações da conta do cliente',()=>{
     })
 
 });
+
+describe.only('MODEL - Deleta a conta do cliente',()=>{
+
+  beforeEach(()=>{
+    sinon.stub(connection, 'execute').resolves([[], []]);
+  })
+  afterEach(()=>{
+    connection.execute.restore();
+  })
+
+    it('Verifica se retorna um array', async ()=> {
+      const result = await modelConta.getWalletInfoById(1);
+      expect(result).to.be.an('arrray');
+    });
+
+});
