@@ -490,7 +490,7 @@ const swaggerConfig = {
       "/conta/delete/{clientId}": {
         delete: {
           summary: "Realiza a exclusão da conta",
-          description: "Essa rota permite o cliente excluir a conta se não tiver nenhum saldo em conta e se não tiver nenhuma ação na carteira. Precisa de autenticação.",
+          description: "Essa rota permite o cliente excluir a conta se o saldo estiver zerado e sem ativos em carteira. Precisa de autenticação.",
           tags: ["Conta"],
           // corrigir a parte da autenticação
           security: [{bearerAuth: []}],
