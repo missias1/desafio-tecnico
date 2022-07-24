@@ -26,67 +26,67 @@ const modelConta = require('../../src/database/models/modelConta');
 //     })
 
 //   });
-////////////////////////////////////////////////////////////////////////////
-  //   describe('Saque não é realizado com sucesso', ()=> {
+// //////////////////////////////////////////////////////////////////////////
+//     describe('Saque não é realizado com sucesso', ()=> {
     
-  //     describe('Quando o valor do saque é maior que o saldo em conta', ()=> {
+//       describe('Quando o valor do saque é maior que o saldo em conta', ()=> {
 
-  //       beforeEach(()=>{
-  //         sinon.stub(modelConta, 'getWalletInfoById').resolves([mocks.WALLET_INFO]);
-  //         sinon.stub(modelConta, 'decreaseCashFromWallet').resolves([mocks.NOT_AFFECTED_ROWS]);
-  //       });
-  //       afterEach(()=>{
-  //         modelConta.getWalletInfoById.restore();
-  //         modelConta.decreaseCashFromWallet.restore();
-  //       });
+//         beforeEach(()=>{
+//           sinon.stub(modelConta, 'getWalletInfoById').resolves([mocks.WALLET_INFO]);
+//           sinon.stub(modelConta, 'decreaseCashFromWallet').resolves([mocks.NOT_AFFECTED_ROWS]);
+//         });
+//         afterEach(()=>{
+//           modelConta.getWalletInfoById.restore();
+//           modelConta.decreaseCashFromWallet.restore();
+//         });
 
-  //       it('Verifica que é lançado um erro', async ()=> {
-  //         try{
-  //           await serviceConta.decreaseCashFromWallet(mocks.BIG_VALUE, clientId);
-  //         } catch (error){
-  //           expect(error).to.Throw;
-  //         }
-  //       });
-  //       it('Verifica se possui as chaves de status e message', async ()=> {
-  //         try{
-  //           await serviceConta.decreaseCashFromWallet(mocks.BIG_VALUE, clientId);
-  //         } catch (error){
-  //           expect(error).to.include.all.keys("status", "message");
-  //           expect(error.status).to.be.a('number')
-  //           expect(error.message).to.be.an('string')
-  //         }
-  //       });
-  //     });
+//         it('Verifica que é lançado um erro', async ()=> {
+//           try{
+//             await serviceConta.decreaseCashFromWallet(mocks.BIG_VALUE, clientId);
+//           } catch (error){
+//             expect(error).to.Throw;
+//           }
+//         });
+//         it('Verifica se possui as chaves de status e message', async ()=> {
+//           try{
+//             await serviceConta.decreaseCashFromWallet(mocks.BIG_VALUE, clientId);
+//           } catch (error){
+//             expect(error).to.include.all.keys("status", "message");
+//             expect(error.status).to.be.a('number')
+//             expect(error.message).to.be.an('string')
+//           }
+//         });
+//       });
 
-  //   describe('Quando o banco não é alterado', ()=> {
+//     describe('Quando o banco não é alterado', ()=> {
 
-  //     beforeEach(()=>{
-  //       sinon.stub(modelConta, 'getWalletInfoById').resolves([mocks.WALLET_INFO]);
-  //       sinon.stub(modelConta, 'decreaseCashFromWallet').resolves([mocks.NOT_AFFECTED_ROWS]);
-  //     });
-  //     afterEach(()=>{
-  //       modelConta.getWalletInfoById.restore();
-  //       modelConta.decreaseCashFromWallet.restore();
-  //     });
+//       beforeEach(()=>{
+//         sinon.stub(modelConta, 'getWalletInfoById').resolves([mocks.WALLET_INFO]);
+//         sinon.stub(modelConta, 'decreaseCashFromWallet').resolves([mocks.NOT_AFFECTED_ROWS]);
+//       });
+//       afterEach(()=>{
+//         modelConta.getWalletInfoById.restore();
+//         modelConta.decreaseCashFromWallet.restore();
+//       });
 
-  //     it('Verifica que é lançado um erro ', async ()=> {
-  //       try{
-  //         await serviceConta.decreaseCashFromWallet(mocks.SHORT_VALUE, clientId)
-  //       } catch (error){
-  //         expect(error).to.include.all.keys("status", "message")
-  //       }
-  //     });
+//       it('Verifica que é lançado um erro ', async ()=> {
+//         try{
+//           await serviceConta.decreaseCashFromWallet(mocks.SHORT_VALUE, clientId)
+//         } catch (error){
+//           expect(error).to.include.all.keys("status", "message")
+//         }
+//       });
 
-  //     it('Verifica se possui as chaves de status e message', async ()=> {
-  //       try{
-  //         await serviceConta.decreaseCashFromWallet(mocks.BIG_VALUE, clientId);
-  //       } catch (error){
-  //         expect(error).to.include.all.keys("status", "message");
-  //         expect(error.status).to.be.a('number')
-  //         expect(error.message).to.be.an('string')
-  //       }
-  //     });
-  //   })
+//       it('Verifica se possui as chaves de status e message', async ()=> {
+//         try{
+//           await serviceConta.decreaseCashFromWallet(mocks.BIG_VALUE, clientId);
+//         } catch (error){
+//           expect(error).to.include.all.keys("status", "message");
+//           expect(error.status).to.be.a('number')
+//           expect(error.message).to.be.an('string')
+//         }
+//       });
+//     })
 
-  // });
+//   });
 // });
