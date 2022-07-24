@@ -112,14 +112,14 @@ describe('CONTROLLER - Realiza saque na conta do cliente',()=>{
 
 });
 
-describe.only('CONTROLLER - Deleta conta do cliente',()=>{
+describe('CONTROLLER - Deleta conta do cliente',()=>{
   const req = {};
   const res = {}
 
   before(()=>{
     req.params = { id: 1 };
     res.status = sinon.stub().returns(res);
-    res.json = sinon.stub().returns();
+    res.end = sinon.stub().returns();
     sinon.stub(serviceConta, 'deleteClient').resolves();
   });
 
@@ -134,7 +134,7 @@ describe.only('CONTROLLER - Deleta conta do cliente',()=>{
     it('É retornado um objeto', async ()=> {
       await controllerConta.deleteClient(req, res);
 
-      expect(res.json.calledWith({ message: mocks.SUCESS_DELETE })).to.be.true;
+      expect(res.end.calledWith()).to.be.true;
     });
 
 });

@@ -25,7 +25,7 @@ const deleteClient = async (req, res) => {
   const { clientId } = req.params;
   await serviceConta.deleteClient(clientId);
 
-  return res.status(204).json({ message: "Account deleted!" });
+  return res.status(204).end();
 }
 
 module.exports = {
