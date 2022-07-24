@@ -67,6 +67,11 @@ JWT_SECRET=
       docker exec -it desafioTecnico bash
     ```
     Dica: A extensão `Remote - Containers` do VS Code permite trabalhar com os containers mais facilmente.
+    
+    Para utilizar o terminal do MySQL, digite o comando abaixo, dentro do container do node. A senha está dentro do arquivo docker-compose.
+    ```bash
+      mysql -u root -p
+    ```
 
 ## Executando aplicação ✔️
 
@@ -81,13 +86,13 @@ Rode o comando abaixo para inicializar o servidor. Ele rodará na porta que espe
 Para rodar os testes, rode o seguinte comando
 
 ```bash
-  npm run test
+  npm test
 ```
 
-Os testes estão com 90% de cobertura, para verificar a cobertura de testes, rode o comando:
+Os testes estão com 86% de cobertura, para verificar a cobertura de testes, rode o comando:
 
 ```bash
-  npm run test coverage
+  npm run coverage
 ```
 ## Deploy no Heroku ✔️
 
