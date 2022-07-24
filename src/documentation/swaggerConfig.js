@@ -24,7 +24,7 @@ const swaggerConfig = {
       "/login": {
         post: {
           summary: "Área de Login",
-          description: "Essa rota permite o usuário fazer o login",
+          description: "Essa rota permite o usuário fazer o login.",
           tags: ["Login"],
           requestBody: {
             content: {
@@ -107,6 +107,10 @@ const swaggerConfig = {
                         message: {
                           type: "string",
                           example: "Created account!"
+                        },
+                        clientId: {
+                          type: "integer",
+                          example: 1
                         }
                       }
                     }
@@ -342,7 +346,8 @@ const swaggerConfig = {
       "/conta/saque": {
         post: {
           summary: "Realiza saque da conta do cliente",
-          description: "Essa rota permite que o cliente faça saque da sua conta. Precisa de autenticação.",
+          description: `Essa rota permite que o cliente faça saque da sua conta. Precisa de autenticação.
+          Valida se o valor do saque não é maior que o disponível na conta`,
           tags: ["Conta"],
           // corrigir a parte da autenticação
           security: [{bearerAuth: []}],
@@ -630,7 +635,7 @@ const swaggerConfig = {
       "/investimentos/comprar": {
         post: {
           summary: "Realiza compra de ações, adicionando-as na carteira do cliente",
-          description: "Essa rota permite que o cliente faça aquisição de novos ativos. Precisa de autenticação.",
+          description: "Essa rota permite que o cliente faça aquisição de novos ativos. Precisa de autenticação. Valida se o ativo está disponível na corretora.",
           tags: ["Investimentos"],
           // corrigir a parte da autenticação
           security: [{bearerAuth: []}],
@@ -706,7 +711,7 @@ const swaggerConfig = {
       "/investimentos/vender": {
         post: {
           summary: "Realiza venda de ações, removendo-as da carteira do cliente",
-          description: "Essa rota permite que o cliente venda suas ações. Precisa de autenticação.",
+          description: "Essa rota permite que o cliente venda suas ações. Precisa de autenticação. Valida que o valor a ser vendido não é maior que o que ele possui de ativos.",
           tags: ["Investimentos"],
           // corrigir a parte da autenticação
           security: [{bearerAuth: []}],
@@ -802,7 +807,14 @@ const swaggerConfig = {
             properties: {
               token: {
                 type: "string"
+              }, 
+              clientId: {
+                type: "integer"
               }
+            },
+            example: {
+              token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+              clientId: 1
             }
           },
           Array_Assets: {
