@@ -25,11 +25,12 @@ O projeto foi desenvolvido com a arquitetura MSC (Model, Service, Controller), p
 
 As tecnologias utilizadas foram as aprendidas até aqui como o NodeJS, ExpressJS e MySQL. Esta última foi optada, ao invés de um ORM, por dar maior controle na manipulação do banco de dados e permitir escrever as queries. Utilizando o MySQL, pude trabalhar tendo mais domínio das saídas esperadas pelo banco, além de possibilitar maior entendimento ao lidar com o banco de dados.
 
-Para realizar os testes, foram utilizadas as bibliotecas aprendidas até aqui: Sinon, Mocha e Chai.
+Para realizar os testes foram utilizadas as bibliotecas aprendidas até aqui: Sinon, Mocha e Chai.
 
 ![alt text](https://img.shields.io/badge/Mocha-8D6748?style=for-the-badge&logo=Mocha&logoColor=white) ![alt text](https://img.shields.io/badge/chai-A30701?style=for-the-badge&logo=chai&logoColor=white)
 
-Outras tecnologias utilizadas, foram o JWT para fazer autenticação nas rotas, o Heroku para deploy e Swagger para documentar os endpoints.
+Outras tecnologias utilizadas foram o JWT para fazer autenticação nas rotas, o Heroku para deploy e Swagger para documentar os endpoints.
+
 ![alt text](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white) ![alt text](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white) ![alt text](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white)
 
 ## Instalação ✔️
