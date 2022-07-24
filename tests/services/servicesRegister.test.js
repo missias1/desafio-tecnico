@@ -11,7 +11,7 @@ describe('SERVICE - Cria conta de novo cliente ',()=>{
   describe('Conta é criada com sucesso', ()=> {
     beforeEach(()=>{
       sinon.stub(modelLogin, 'findClientByEmail').resolves(undefined);
-      sinon.stub(modelRegister, 'addClient').resolves([mocks.AFFECTED_ROWS]);
+      sinon.stub(modelRegister, 'addClient').resolves([mocks.INSERTID]);
     })
   
     afterEach(()=>{

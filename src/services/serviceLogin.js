@@ -11,8 +11,8 @@ const findClient = async (email, password)=> {
 
   //acessa os dados retornados, passando-os para gerar o token
   const { client_id, name } = client;
-  const token = generateToken({ client_id, name, email })
-  return {token};
+  const token = generateToken({ client_id, name, email });
+  return {token, clientId:client_id}
 };
 
 module.exports = {

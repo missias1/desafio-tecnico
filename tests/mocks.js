@@ -83,7 +83,7 @@ const SELL_ASSET = {
   assetId: 3,
 }
 
-const TOKEN = { token: "tokensupersecreto" }
+const TOKEN = { clientId: 1, token: "tokensupersecreto" }
 
 const BIG_VALUE = 100000
 
@@ -105,6 +105,8 @@ const UPDATE_INFO = {
   telephone: "22988345670"
 }
 
+const INSERTID = { insertId: 1}
+
 module.exports = {
   ARRAY_ASSETS,
   ASSET,
@@ -125,5 +127,6 @@ module.exports = {
   NEW_USER,
   EMAIL_EXIST,
   SUCESS_CREATED,
-  UPDATE_INFO
+  UPDATE_INFO,
+  INSERTID
 }

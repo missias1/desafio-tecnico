@@ -3,7 +3,6 @@ const {expect} = require('chai');
 const modelLogin = require('../../src/database/models/modelLogin');
 const mocks = require('../mocks');
 const serviceLogin = require('../../src/services/serviceLogin');
-const generateToken = require('../../src/utils/jwtToken');
 
 describe('SERVICE - Procura pelo cliente que corresponde aos dados',()=>{
   const password= "password"
@@ -16,9 +15,13 @@ describe('SERVICE - Procura pelo cliente que corresponde aos dados',()=>{
       modelLogin.findClient.restore();
     });
     
-    it('Verifica se retorna uma string', async ()=> {
+    it('Verifica se retorna um objeto', async ()=> {
       const client = await serviceLogin.findClient(mocks.USER_INFO.email, password);
       expect(client).to.be.an('object');
+    });
+    it('Verifica se retorna as chaves esperadas', async ()=> {
+      const client = await serviceLogin.findClient(mocks.USER_INFO.email, password);
+      expect(client).to.include.all.keys('token', 'clientId')
     });
 
   });
@@ -49,7 +52,6 @@ describe('SERVICE - Procura pelo cliente que corresponde aos dados',()=>{
       }
     });
   
+  });
 
-  })
-
-})
+});

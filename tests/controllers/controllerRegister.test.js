@@ -12,7 +12,7 @@ describe('CONTROLLER - Realiza cadastro de novo cliente',()=>{
     req.body = mocks.NEW_USER;
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
-    sinon.stub(serviceRegister, 'addClient').resolves(mocks.TOKEN);
+    sinon.stub(serviceRegister, 'addClient').resolves(mocks.INSERTID.insertId);
   });
 
   after(()=> {
@@ -26,8 +26,8 @@ describe('CONTROLLER - Realiza cadastro de novo cliente',()=>{
     });
     it('É retornado um objeto', async ()=> {
       await controllerRegister.addClient(req, res);
-
-      expect(res.json.calledWith({ message: mocks.SUCESS_CREATED })).to.be.true;
+      
+      expect(res.json.calledWith({ clientId: mocks.INSERTID.insertId, message: mocks.SUCESS_CREATED })).to.be.true;
     });
 
 });

@@ -8,9 +8,9 @@ const addClient = async ({ name, email, password, telephone })=> {
 
   if(findEmail) throw createErrorObj(400, "Email already exist!");
 
-  const [result] = await modelRegister.addClient(name, email, password, telephone)
+  const [result] = await modelRegister.addClient(name, email, password, telephone);
 
-  return result.affectedRows;
+  return result.insertId;
 };
 
 module.exports = {

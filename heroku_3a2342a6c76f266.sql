@@ -52,18 +52,18 @@ CREATE TABLE assets_clients (
         ON DELETE CASCADE
 ) ENGINE=INNODB;
 
-INSERT INTO heroku_3a2342a6c76f266.assets_clients (asset_id, client_id, quantity_asset) VALUES 
-(4, 4, 100),
-(14, 4, 50),
-(24, 4, 40),
-(34, 14, 200),
-(44, 14, 150),
-(54, 14, 300),
-(64, 24, 100),
-(74, 24, 100),
-(4, 24, 100),
-(84, 34, 250),
-(14, 34, 250),
-(94, 34, 250);
-
 SET SQL_SAFE_UPDATES = 0;
+
+INSERT INTO heroku_3a2342a6c76f266.assets_clients (asset_id, client_id, quantity_asset) VALUES 
+(1, 1, 100),
+(2, 1, 50),
+(3, 1, 40),
+(4, 2, 200),
+(5, 2, 150),
+(6, 2, 300),
+(7, 3, 100),
+(8, 3, 100),
+(4, 3, 100),
+(9, 4, 250),
+(2, 4, 250),
+(10, 4, 250);
