@@ -25,7 +25,7 @@ const swaggerConfig = {
         post: {
           summary: "Área de Login",
           description: "Essa rota permite o usuário fazer o login",
-          tags: ["Client"],
+          tags: ["Login"],
           requestBody: {
             content: {
               "application/json": {
@@ -135,6 +135,7 @@ const swaggerConfig = {
             name: "clientId",
             in: "path",
             description: "Id do cliente",
+            required: true,
           }],
           responses: {
             401: {
@@ -227,7 +228,8 @@ const swaggerConfig = {
                   "$ref": "#/components/schemas/Deposit"
                   }
                 }
-              }
+              },
+              required: true,
             },
           responses: {
             401: {
@@ -301,7 +303,8 @@ const swaggerConfig = {
                   "$ref": "#/components/schemas/Withdraw"
                   }
                 }
-              }
+              },
+              required: true,
             },
           responses: {
             401: {
@@ -369,6 +372,12 @@ const swaggerConfig = {
           tags: ["Conta"],
           // corrigir a parte da autenticação
           security: [{bearerAuth: []}],
+          parameters: [{
+            name: "clientId",
+            in: "path",
+            description: "Id do cliente",
+            required: true,
+          }],
           responses: {
             401: {
               description: "Unauthorized",
@@ -429,12 +438,22 @@ const swaggerConfig = {
         }
       },
       "/investimentos/comprar": {
-        get: {
+        post: {
           summary: "Realiza compra de ações, adicionando-as na carteira do cliente",
           description: "Essa rota permite que o cliente faça aquisição de novos ativos. Precisa de autenticação.",
           tags: ["Investimentos"],
           // corrigir a parte da autenticação
           security: [{bearerAuth: []}],
+          requestBody: {
+            content: {
+              "application/json": {
+                schema: {
+                  "$ref": "#/components/schemas/Buy_Assets"
+                  }
+                }
+              },
+              required: true,
+            },
           responses: {
             401: {
               description: "Unauthorized",
@@ -495,12 +514,22 @@ const swaggerConfig = {
         }
       },
       "/investimentos/vender": {
-        get: {
+        post: {
           summary: "Realiza venda de ações, removendo-as da carteira do cliente",
           description: "Essa rota permite que o cliente venda suas ações. Precisa de autenticação.",
           tags: ["Investimentos"],
           // corrigir a parte da autenticação
           security: [{bearerAuth: []}],
+          requestBody: {
+            content: {
+              "application/json": {
+                schema: {
+                  "$ref": "#/components/schemas/Sell_Assets"
+                  }
+                }
+              },
+              required: true,
+            },
           responses: {
             401: {
               description: "Unauthorized",

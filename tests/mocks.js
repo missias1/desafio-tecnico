@@ -83,6 +83,13 @@ const BIG_VALUE = 100000
 
 const SHORT_VALUE = 100
 
+const NEW_USER = {
+  name: "Pedro Santana",
+  email: "pedrinho@gmail.com",
+  password: "123456",
+  telephone: "2798776644"
+}
+
 module.exports = {
   ARRAY_ASSETS,
   ASSET,
@@ -98,5 +105,6 @@ module.exports = {
   BUY_ASSET,
   SELL_ASSET,
   LOGIN,
-  TOKEN
+  TOKEN,
+  NEW_USER
 }
