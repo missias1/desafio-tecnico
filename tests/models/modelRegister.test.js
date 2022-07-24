@@ -1,10 +1,11 @@
 const sinon = require('sinon');
 const {expect} = require('chai');
 const mocks = require('../mocks');
+const connection = require('../../src/database/connection');
 const modelRegister = require('../../src/database/models/modelRegister')
 
 
-describe.only('MODEL - Realiza cadastro de novo cliente',()=>{
+describe('MODEL - Realiza cadastro de novo cliente',()=>{
 
   beforeEach(()=>{
     sinon.stub(connection, 'execute').resolves([[], []]);

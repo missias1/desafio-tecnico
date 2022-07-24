@@ -90,6 +90,10 @@ const NEW_USER = {
   telephone: "2798776644"
 }
 
+const EMAIL_EXIST = "pedrinho@gmail.com"
+
+const SUCESS_CREATED = "Created account!"
+
 module.exports = {
   ARRAY_ASSETS,
   ASSET,
@@ -106,5 +110,7 @@ module.exports = {
   SELL_ASSET,
   LOGIN,
   TOKEN,
-  NEW_USER
+  NEW_USER,
+  EMAIL_EXIST,
+  SUCESS_CREATED
 }
