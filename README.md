@@ -1,13 +1,14 @@
-# API de ativos e clientes
+# API 
 
 Esse projeto foi realizado para o desafio técnico e tem como objetivo: 
 
 - Listar informações dos ativos e dados dos clientes;
 - Realizar operações de compra, venda, saque e depósito;
+- Realizar login e criar contas;
 - Ser utilizada para se comunicar com o front de um aplicativo de investimentos em ações.
 
 ## Conteúdo
-- Tecnologias Utilizadas
+- Tecnologias Utilizadas e tomada de decisão
 - Instalação
 - Como rodar a API
 - Executando aplicação
@@ -17,11 +18,14 @@ Esse projeto foi realizado para o desafio técnico e tem como objetivo:
 - Documentação Swagger
 - Aprendizados
 
-## Tecnologias utilizadas ✔️
+## Tecnologias Utilizadas e tomada de decisão ✔️
 
 ```bash
 NodeJS, MySQL, Heroku, Swagger, ExpressJS, Mocha, Chai, Sinon
 ```
+O projeto foi desenvolvido com a arquitetura MSC (Model, Service, Controller), possibilitando que as reponsabilidades das funções fiquem em camadas separadas. 
+
+As tecnologias utilizadas foram as aprendidas até aqui como o NodeJS, ExpressJS e MySQL. Esta última foi optada, ao invés de um ORM, por dar maior controle na manipulação do banco de dados e permitir escrever as queries. Utilizando o MySQL, pude trabalhar tendo mais domínio das saídas esperadas, além de possibilitar maior entendimento ao lidar com banco de dados.
 
 ## Instalação ✔️
 
