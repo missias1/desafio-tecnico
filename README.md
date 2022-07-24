@@ -1,4 +1,4 @@
-# API 
+# API para corretora de investimentos
 
 Esse projeto foi realizado para o desafio técnico e tem como objetivo: 
 
@@ -13,10 +13,9 @@ Esse projeto foi realizado para o desafio técnico e tem como objetivo:
 - Como rodar a API
 - Executando aplicação
 - Executando testes
-- Diagrama e Mapa de atividades
 - Deploy no Heroku
 - Documentação Swagger
-- Aprendizados
+- Diagramas
 
 ## Tecnologias Utilizadas e tomada de decisão ✔️
 
@@ -30,6 +29,8 @@ Para realizar os testes, foram utilizadas as bibliotecas aprendidas até aqui: S
 
 ![alt text](https://img.shields.io/badge/Mocha-8D6748?style=for-the-badge&logo=Mocha&logoColor=white) ![alt text](https://img.shields.io/badge/chai-A30701?style=for-the-badge&logo=chai&logoColor=white)
 
+Outras tecnologias utilizadas, foram o JWT para fazer autenticação nas rotas, o Heroku para deploy e Swagger para documentar os endpoints.
+![alt text](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white) ![alt text](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white) ![alt text](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white)
 
 ## Instalação ✔️
 
@@ -47,15 +48,15 @@ npm install
 
 ## Como rodar a API ✔️
 
-Será necessário criar um arquivo .env com as seguintes variáveis
+Será necessário criar um arquivo `.env` com as variáveis listadas abaixo, caso rode localmente.
 
   ```env
 PORT=3000
-MYSQL_HOST=
-MYSQL_USER=
-MYSQL_PASSWORD=
-MYSQL_DATABASE=
-JWT_SECRET=
+MYSQL_HOST= localhost
+MYSQL_USER=root
+MYSQL_PASSWORD=password
+MYSQL_DATABASE=heroku_3a2342a6c76f266
+JWT_SECRET=suachave
   ```
 - ### Rodando localmente 💻
 
@@ -83,7 +84,7 @@ JWT_SECRET=
 
 ## Executando aplicação ✔️
 
-Rode o comando abaixo para inicializar o servidor. Ele rodará na porta que foi especificada no arquivo `.env`.
+Rode o comando abaixo para inicializar o servidor. Ele rodará localmente na porta que foi especificada no arquivo `.env`.
 
 ```bash
   npm run dev
@@ -97,16 +98,18 @@ Para rodar os testes, rode o seguinte comando
   npm test
 ```
 
-Os testes estão com 86% de cobertura, para verificar a cobertura de testes, rode o comando:
+Os testes estão com `86%` de cobertura, para verificar a cobertura de testes, rode o comando:
 
 ```bash
   npm run coverage
 ```
+
 ## Deploy no Heroku ✔️
 
 Foi feito o deploy do projeto no Heroku, utilizando o clearDB como serviço de banco de dados externo.
 
-```bash
+```bash!
+
   https://missias1-desafio-tecnico.herokuapp.com/ativos
 ```
 Para testar os endpoints, é necessário utilizar uma API Client como o [Insomnia](https://insomnia.rest/) ou [Postman](https://www.postman.com/). 
@@ -119,8 +122,18 @@ Assim é possível enviar requisições de POST, PUT, DELETE e acessar as rotas 
 A documentação de todas as rotas foi feita utilizando o Swagger. Nele é possível ver as respostas esperadas para cada endpoint, bem como seu formato.
 
 ```bash
-  link aqui
+  https://missias1-desafio-tecnico.herokuapp.com/docs/
 ```
 
 Obs: Foi a primeira vez utilizando o Swagger e por algum motivo a autenticação dele para acessar as rotas sempre retorna o token como inválido. No entanto, por meio da API Client é possível ver o token funcionando corretamente.
+
+## Diagramas ✔️
+Foi feita uma abordagem mais simples para lidar com o banco de dados. O foco foi listar as atividades que o usuário pode realizar dentro do aplicativo. Desconsiderando outros papeis com maiores poderes de acesso.
+
+#### Ações que o usuário pode realizar
+<img src="/images/mapa_acoes_do_cliente.jpg" width= "800">
+
+
+#### Relação das tabelas
+<img src="/images/diagrama_database.png" width= "800">
 
