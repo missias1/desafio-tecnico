@@ -92,7 +92,7 @@ describe('MODEL - Procura pelo cliente no banco de dados por meio do id',()=>{
 
 });
 
-describe.only('MODEL - Procura pelo cliente no banco de dados por meio do email',()=>{
+describe('MODEL - Procura pelo cliente no banco de dados por meio do email',()=>{
 
   describe('Cliente é encontrado com sucesso', ()=> {
 

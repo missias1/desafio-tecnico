@@ -5,8 +5,6 @@ const createErrorObj = require('../utils/createErrorObj');
 const getAllAssets = async ()=> {
   //recupera todos os ativos
   const assets = await modelAtivos.getAllAssets();
-  console.log('entrei no service');
-  console.log(assets)
   return assets;
 };
 

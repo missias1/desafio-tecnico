@@ -437,6 +437,71 @@ const swaggerConfig = {
           }
         }
       },
+      "/conta/delete/{clientId}": {
+        delete: {
+          summary: "Realiza a exclusão da conta",
+          description: "Essa rota permite o cliente excluir a conta se não tiver nenhum saldo em conta e se não tiver nenhuma ação na carteira. Precisa de autenticação.",
+          tags: ["Conta"],
+          // corrigir a parte da autenticação
+          security: [{bearerAuth: []}],
+          parameters: [{
+            name: "clientId",
+            in: "path",
+            description: "Id do cliente",
+            required: true,
+          }],
+          responses: {
+            401: {
+              description: "Unauthorized",
+              content: {
+                "application/json": {
+                  schema: {
+                    oneOf: [
+                      {"$ref": "#/components/schemas/Error401A"},
+                      {"$ref": "#/components/schemas/Error401B"}
+                    ]
+                  }
+                }
+              }
+            },
+            400: {
+              description: "Bad Request",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: 'You have assets or cash in your account and can not delete yet.'
+                      }
+                    },
+                  },
+                },
+              }
+            },
+            204: {
+              description: "No content",
+            },
+            500: {
+              description: "Internal Server Error",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: "Internal error!"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "/investimentos/comprar": {
         post: {
           summary: "Realiza compra de ações, adicionando-as na carteira do cliente",
@@ -767,6 +832,44 @@ const swaggerConfig = {
               quantity: 70,
               clientId: 1,
               assetId: 3
+            },
+          },
+          EditInfo: {
+            type: "object",
+            properties: {
+              clientId: {
+                type: "integer"
+              },
+              telephone: {
+                type: "string"
+              },
+          },
+            example: {
+              clientId: 1,
+              telephone: "11988652340"
+            },
+          },
+          Register: {
+            type: "object",
+            properties: {
+              name: {
+                type: "string"
+              },
+              email: {
+                type: "string"
+              },
+              password: {
+                type: "string"
+              },
+              telephone: {
+                type: "string"
+              },
+          },
+            example: {
+              name: "Leticia",
+              email: "leticia@gmail.com",
+              password: "123456",
+              telephone: "11988652340"
             },
           },
           Error401A: {
