@@ -1,10 +1,9 @@
-const sinon = require('sinon');
-const {expect} = require('chai');
-const serviceInvestimentos = require('../../src/services/serviceInvestimentos');
-const modelAtivos = require('../../src/database/models/modelAtivos');
-const modelInvestimentos = require('../../src/database/models/modelInvestimentos');
-const modelConta = require('../../src/database/models/modelConta');
-
+// const sinon = require('sinon');
+// const {expect} = require('chai');
+// const serviceInvestimentos = require('../../src/services/serviceInvestimentos');
+// const modelAtivos = require('../../src/database/models/modelAtivos');
+// const modelInvestimentos = require('../../src/database/models/modelInvestimentos');
+// const modelConta = require('../../src/database/models/modelConta');
 
 // describe('SERVICE - Ativos são adicionados com sucesso na carteira',()=>{
 

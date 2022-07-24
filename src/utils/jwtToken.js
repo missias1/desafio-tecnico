@@ -7,7 +7,7 @@ const jwtConfig = {
   algorithm: 'HS256',
 };
 
-const generateToken = (payload)=> JWT.sign(payload, SECRET, jwtConfig);
+const generateToken = (payload) => JWT.sign(payload, SECRET, jwtConfig);
 
 const decodeToken = (token) => {
   const infoToken = JWT.verify(token, SECRET);
@@ -17,4 +17,4 @@ const decodeToken = (token) => {
 module.exports = {
   generateToken,
   decodeToken,
-}
+};

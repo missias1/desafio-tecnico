@@ -1,20 +1,20 @@
 const serviceConta = require('../services/serviceConta');
 
-const increaseCashInWallet = async (req, res)=> {
+const increaseCashInWallet = async (req, res) => {
   const { value, clientId } = req.body;
 
   await serviceConta.increaseCashInWallet(value, clientId);
   return res.status(201).json({ clientId, value });
 };
 
-const decreaseCashFromWallet = async (req, res)=> {
+const decreaseCashFromWallet = async (req, res) => {
   const { value, clientId } = req.body;
 
   await serviceConta.decreaseCashFromWallet(value, clientId);
   return res.status(201).json({ clientId, value });
 };
 
-const getWalletInfoById = async (req, res)=> {
+const getWalletInfoById = async (req, res) => {
   const { clientId } = req.params;
   
   const walletInfo = await serviceConta.getWalletInfoById(clientId);
@@ -28,13 +28,12 @@ const deleteClient = async (req, res) => {
   return res.status(204).end();
 };
 
-const updateInfoClient = async (req, res)=> {
+const updateInfoClient = async (req, res) => {
   const { clientId, telephone } = req.body;
   await serviceConta.updateInfoClient(clientId, telephone);
 
-  return res.status(200).json({ clientId, telephone })
-}
-
+  return res.status(200).json({ clientId, telephone });
+};
 
 module.exports = {
   increaseCashInWallet,
@@ -42,4 +41,4 @@ module.exports = {
   getWalletInfoById,
   deleteClient,
   updateInfoClient,
-}
+};

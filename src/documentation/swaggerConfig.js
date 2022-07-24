@@ -1,1034 +1,1037 @@
+/* eslint-disable sonarjs/no-duplicate-string */
+/* eslint-disable max-len */
+/* eslint-disable max-lines */
 const swaggerConfig = {
   definition: {
-    openapi:"3.0.1",
+    openapi: '3.0.1',
     info: {
-      title: "API EXPRESS - Corretora",
-      description: "Essa Api tem como objetivo manipular os ativos e clientes de uma corretora utilizando o express",
-      version: "1.0",
-      repository: "https://github.com/missias1/desafio-tecnico/",
-      contact:{
-        url: "https://github.com/missias1/desafio-tecnico",
-        email: "leticia.m.icm@gmail.com",
-      }
+      title: 'API EXPRESS - Corretora',
+      description: 'Essa Api tem como objetivo manipular os ativos e clientes de uma corretora utilizando o express',
+      version: '1.0',
+      repository: 'https://github.com/missias1/desafio-tecnico/',
+      contact: {
+        url: 'https://github.com/missias1/desafio-tecnico',
+        email: 'leticia.m.icm@gmail.com',
+      },
 
     },
     servers: [{
-      url: "http://localhost:3000",
-      description: "Servidor local"
+      url: 'http://localhost:3000',
+      description: 'Servidor local',
     },
     {
-      url: "https://missias1-desafio-tecnico.herokuapp.com/",
-      description: "Deploy da aplicação"
+      url: 'https://missias1-desafio-tecnico.herokuapp.com/',
+      description: 'Deploy da aplicação',
     }],
     paths: {
-      "/login": {
+      '/login': {
         post: {
-          summary: "Área de Login",
-          description: "Essa rota permite o usuário fazer o login.",
-          tags: ["Login"],
+          summary: 'Área de Login',
+          description: 'Essa rota permite o usuário fazer o login.',
+          tags: ['Login'],
           requestBody: {
             content: {
-              "application/json": {
+              'application/json': {
                 schema: {
-                  "$ref": "#/components/schemas/Login"
-                  }
-                }
-              }
+                  $ref: '#/components/schemas/Login',
+                  },
+                },
+              },
             },
             responses: {
               400: {
-                description: "Bad Request",
+                description: 'Bad Request',
                 content: {
-                  "application/json": {
+                  'application/json': {
                     schema: {
-                      type: "object",
+                      type: 'object',
                       properties: {
                         message: {
-                          type: "string",
-                          example: "Username or password invalid!"
-                        }
-                      }
-                    }
-                  }
-                }
+                          type: 'string',
+                          example: 'Username or password invalid!',
+                        },
+                      },
+                    },
+                  },
+                },
               },
               201: {
-                description: "Created",
+                description: 'Created',
                 content: {
-                  "application/json":{
+                  'application/json': {
                     schema: {
-                      type: "object",
-                      "$ref": "#/components/schemas/Token"
-                    }
-                  }
-                }
-              }
-            }
-          }
+                      type: 'object',
+                      $ref: '#/components/schemas/Token',
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
-      "/register": {
+      '/register': {
         post: {
-          summary: "Área de Cadastro",
-          description: "Essa rota permite o cliente fazer cadastro",
-          tags: ["Cadastro"],
+          summary: 'Área de Cadastro',
+          description: 'Essa rota permite o cliente fazer cadastro',
+          tags: ['Cadastro'],
           requestBody: {
             content: {
-              "application/json": {
+              'application/json': {
                 schema: {
-                  "$ref": "#/components/schemas/Register"
-                  }
-                }
-              }
+                  $ref: '#/components/schemas/Register',
+                  },
+                },
+              },
             },
             responses: {
               400: {
-                description: "Bad Request",
+                description: 'Bad Request',
                 content: {
-                  "application/json": {
+                  'application/json': {
                     schema: {
-                      type: "object",
+                      type: 'object',
                       properties: {
                         message: {
-                          type: "string",
-                          example: "Email already exist!"
-                        }
-                      }
-                    }
-                  }
-                }
+                          type: 'string',
+                          example: 'Email already exist!',
+                        },
+                      },
+                    },
+                  },
+                },
               },
               201: {
-                description: "Created",
+                description: 'Created',
                 content: {
-                  "application/json":{
+                  'application/json': {
                     schema: {
-                      type: "object",
+                      type: 'object',
                       properties: {
                         message: {
-                          type: "string",
-                          example: "Created account!"
+                          type: 'string',
+                          example: 'Created account!',
                         },
                         clientId: {
-                          type: "integer",
-                          example: 1
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-        }
+                          type: 'integer',
+                          example: 1,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+        },
       },
-      "/ativos": {
+      '/ativos': {
         get: {
-          summary: "Lista todas as ações",
-          description: "Essa rota lista as ações da corretora",
-          tags: ["Ativos"],
+          summary: 'Lista todas as ações',
+          description: 'Essa rota lista as ações da corretora',
+          tags: ['Ativos'],
             responses: {
               200: {
-                description: "OK",
+                description: 'OK',
                 content: {
-                  "application/json": {
+                  'application/json': {
                     schema: {
-                      "$ref": "#components/schemas/Array_Assets"
-                    }
-                  }
-                }
-              }
-            }
-        }
+                      $ref: '#components/schemas/arrayAssets',
+                    },
+                  },
+                },
+              },
+            },
+        },
       },
-      "/ativos/{assetId}": {
+      '/ativos/{assetId}': {
         get: {
-          summary: "Lista uma ação pelo id",
-          description: "Essa rota permite a consulta de uma ação pelo id",
-          tags: ["Ativos"],
+          summary: 'Lista uma ação pelo id',
+          description: 'Essa rota permite a consulta de uma ação pelo id',
+          tags: ['Ativos'],
           parameters: [{
-            name: "assetId",
-            in: "path",
-            description: "Id do ativo",
+            name: 'assetId',
+            in: 'path',
+            description: 'Id do ativo',
           }],
           responses: {
             200: {
-              description: "OK",
+              description: 'OK',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    "$ref": "#components/schemas/Asset"
-                  }
-                }
-              }
+                    $ref: '#components/schemas/Asset',
+                  },
+                },
+              },
             },
             404: {
-              description: "Not Found",
+              description: 'Not Found',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: "This asset does not exist!"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+                        type: 'string',
+                        example: 'This asset does not exist!',
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
       },
-      "/ativos/client/{clientId}": {
+      '/ativos/client/{clientId}': {
         get: {
-          summary: "Lista as ações de um determinado cliente a partir do id",
-          description: "Essa rota permite a consulta de todas ações de um cliente pelo id. Precisa de autenticação.",
-          tags: ["Ativos"],
-          security: [{bearerAuth: []}],
+          summary: 'Lista as ações de um determinado cliente a partir do id',
+          description: 'Essa rota permite a consulta de todas ações de um cliente pelo id. Precisa de autenticação.',
+          tags: ['Ativos'],
+          security: [{ bearerAuth: [] }],
           parameters: [{
-            name: "clientId",
-            in: "path",
-            description: "Id do cliente",
+            name: 'clientId',
+            in: 'path',
+            description: 'Id do cliente',
             required: true,
           }],
           responses: {
             401: {
-              description: "Unauthorized",
+              description: 'Unauthorized',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
                     oneOf: [
-                      {"$ref": "#/components/schemas/Error401A"},
-                      {"$ref": "#/components/schemas/Error401B"}
-                    ]
-                  }
-                }
-              }
+                      { $ref: '#/components/schemas/Error401A' },
+                      { $ref: '#/components/schemas/Error401B' },
+                    ],
+                  },
+                },
+              },
             },
             400: {
-              description: "Bad Request",
+              description: 'Bad Request',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: '"token" is required!'
-                      }
-                    }
-                  }
-                }
-              }
+                        type: 'string',
+                        example: '"token" is required!',
+                      },
+                    },
+                  },
+                },
+              },
             },
             200: {
-              description: "OK",
+              description: 'OK',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "array",
+                    type: 'array',
                     items: {
-                      "$ref": "#components/schemas/Array_Assets_Client"
-                    }
-                  }
-                }
-              }
+                      $ref: '#components/schemas/arrayAssetsClient',
+                    },
+                  },
+                },
+              },
             },
             404: {
-              description: "Not Found",
+              description: 'Not Found',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: "User not found!"
-                      }
-                    }
-                  }
-                }
-              }
+                        type: 'string',
+                        example: 'User not found!',
+                      },
+                    },
+                  },
+                },
+              },
             },
             500: {
-              description: "Internal Server Error",
+              description: 'Internal Server Error',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: "Internal error!"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+                        type: 'string',
+                        example: 'Internal error!',
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
       },
-      "/conta/deposito": {
+      '/conta/deposito': {
         post: {
-          summary: "Realiza depósito na conta do cliente",
-          description: "Essa rota permite que o cliente faça depósito na sua conta. Precisa de autenticação.",
-          tags: ["Conta"],
-          security: [{bearerAuth: []}],
+          summary: 'Realiza depósito na conta do cliente',
+          description: 'Essa rota permite que o cliente faça depósito na sua conta. Precisa de autenticação.',
+          tags: ['Conta'],
+          security: [{ bearerAuth: [] }],
           requestBody: {
             content: {
-              "application/json": {
+              'application/json': {
                 schema: {
-                  "$ref": "#/components/schemas/Deposit"
-                  }
-                }
+                  $ref: '#/components/schemas/Deposit',
+                  },
+                },
               },
               required: true,
             },
           responses: {
             401: {
-              description: "Unauthorized",
+              description: 'Unauthorized',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
                     oneOf: [
-                      {"$ref": "#/components/schemas/Error401A"},
-                      {"$ref": "#/components/schemas/Error401B"}
-                    ]
-                  }
-                }
-              }
+                      { $ref: '#/components/schemas/Error401A' },
+                      { $ref: '#/components/schemas/Error401B' },
+                    ],
+                  },
+                },
+              },
             },
             400: {
-              description: "Bad Request",
+              description: 'Bad Request',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
                     properties: {
                       message: {
-                        type: "string",
-                        example: '"token" is required!'
-                      }
-                    }
-                  }
+                        type: 'string',
+                        example: '"token" is required!',
+                      },
+                    },
+                  },
                 },
-              }
+              },
             },
             201: {
-              description: "Created",
+              description: 'Created',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    "$ref": "#components/schemas/Deposit"
-                  }
-                }
-              }
+                    $ref: '#components/schemas/Deposit',
+                  },
+                },
+              },
             },
             500: {
-              description: "Internal Server Error",
+              description: 'Internal Server Error',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: "Internal error!"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+                        type: 'string',
+                        example: 'Internal error!',
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
       },
-      "/conta/saque": {
+      '/conta/saque': {
         post: {
-          summary: "Realiza saque da conta do cliente",
+          summary: 'Realiza saque da conta do cliente',
           description: `Essa rota permite que o cliente faça saque da sua conta. Precisa de autenticação.
           Valida se o valor do saque não é maior que o disponível na conta`,
-          tags: ["Conta"],
+          tags: ['Conta'],
           // corrigir a parte da autenticação
-          security: [{bearerAuth: []}],
+          security: [{ bearerAuth: [] }],
           requestBody: {
             content: {
-              "application/json": {
+              'application/json': {
                 schema: {
-                  "$ref": "#/components/schemas/Withdraw"
-                  }
-                }
+                  $ref: '#/components/schemas/Withdraw',
+                  },
+                },
               },
               required: true,
             },
           responses: {
             401: {
-              description: "Unauthorized",
+              description: 'Unauthorized',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
                     oneOf: [
-                      {"$ref": "#/components/schemas/Error401A"},
-                      {"$ref": "#/components/schemas/Error401B"}
-                    ]
-                  }
-                }
-              }
+                      { $ref: '#/components/schemas/Error401A' },
+                      { $ref: '#/components/schemas/Error401B' },
+                    ],
+                  },
+                },
+              },
             },
             400: {
-              description: "Bad Request",
+              description: 'Bad Request',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: 'You do not have this value in your account!'
-                      }
+                        type: 'string',
+                        example: 'You do not have this value in your account!',
+                      },
                     },
                   },
                 },
-              }
+              },
             },
             201: {
-              description: "Created",
+              description: 'Created',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    "$ref": "#/components/schemas/Withdraw"
-                  }
-                }
-              }
+                    $ref: '#/components/schemas/Withdraw',
+                  },
+                },
+              },
             },
             500: {
-              description: "Internal Server Error",
+              description: 'Internal Server Error',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: "Internal error!"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+                        type: 'string',
+                        example: 'Internal error!',
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
       },
-      "/conta/{clientId}": {
+      '/conta/{clientId}': {
         get: {
-          summary: "Realiza consulta do saldo do cliente pelo id",
-          description: "Essa rota permite listar o saldo do cliente pelo id. Precisa de autenticação.",
-          tags: ["Conta"],
+          summary: 'Realiza consulta do saldo do cliente pelo id',
+          description: 'Essa rota permite listar o saldo do cliente pelo id. Precisa de autenticação.',
+          tags: ['Conta'],
           // corrigir a parte da autenticação
-          security: [{bearerAuth: []}],
+          security: [{ bearerAuth: [] }],
           parameters: [{
-            name: "clientId",
-            in: "path",
-            description: "Id do cliente",
+            name: 'clientId',
+            in: 'path',
+            description: 'Id do cliente',
             required: true,
           }],
           responses: {
             401: {
-              description: "Unauthorized",
+              description: 'Unauthorized',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
                     oneOf: [
-                      {"$ref": "#/components/schemas/Error401A"},
-                      {"$ref": "#/components/schemas/Error401B"}
-                    ]
-                  }
-                }
-              }
+                      { $ref: '#/components/schemas/Error401A' },
+                      { $ref: '#/components/schemas/Error401B' },
+                    ],
+                  },
+                },
+              },
             },
             400: {
-              description: "Bad Request",
+              description: 'Bad Request',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: '"token" is required!'
-                      }
+                        type: 'string',
+                        example: '"token" is required!',
+                      },
                     },
                   },
                 },
-              }
+              },
             },
             201: {
-              description: "OK",
+              description: 'OK',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    "$ref": "#/components/schemas/Wallet"
-                  }
-                }
-              }
+                    $ref: '#/components/schemas/Wallet',
+                  },
+                },
+              },
             },
             500: {
-              description: "Internal Server Error",
+              description: 'Internal Server Error',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: "Internal error!"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+                        type: 'string',
+                        example: 'Internal error!',
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
       },
-      "/conta/delete/{clientId}": {
+      '/conta/delete/{clientId}': {
         delete: {
-          summary: "Realiza a exclusão da conta",
-          description: "Essa rota permite o cliente excluir a conta se o saldo estiver zerado e sem ativos em carteira. Precisa de autenticação.",
-          tags: ["Conta"],
+          summary: 'Realiza a exclusão da conta',
+          description: 'Essa rota permite o cliente excluir a conta se o saldo estiver zerado e sem ativos em carteira. Precisa de autenticação.',
+          tags: ['Conta'],
           // corrigir a parte da autenticação
-          security: [{bearerAuth: []}],
+          security: [{ bearerAuth: [] }],
           parameters: [{
-            name: "clientId",
-            in: "path",
-            description: "Id do cliente",
+            name: 'clientId',
+            in: 'path',
+            description: 'Id do cliente',
             required: true,
           }],
           responses: {
             401: {
-              description: "Unauthorized",
+              description: 'Unauthorized',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
                     oneOf: [
-                      {"$ref": "#/components/schemas/Error401A"},
-                      {"$ref": "#/components/schemas/Error401B"}
-                    ]
-                  }
-                }
-              }
+                      { $ref: '#/components/schemas/Error401A' },
+                      { $ref: '#/components/schemas/Error401B' },
+                    ],
+                  },
+                },
+              },
             },
             400: {
-              description: "Bad Request",
+              description: 'Bad Request',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: 'You have assets or cash in your account and can not delete yet.'
-                      }
+                        type: 'string',
+                        example: 'You have assets or cash in your account and can not delete yet.',
+                      },
                     },
                   },
                 },
-              }
+              },
             },
             204: {
-              description: "No content",
+              description: 'No content',
             },
             500: {
-              description: "Internal Server Error",
+              description: 'Internal Server Error',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: "Internal error!"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+                        type: 'string',
+                        example: 'Internal error!',
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
       },
-      "/conta/edit": {
+      '/conta/edit': {
         put: {
-          summary: "Atualiza dado do cliente",
-          description: "Essa rota permite o cliente atualizar seu dado cadastrado. Precisa de autenticação.",
-          tags: ["Conta"],
-          security: [{bearerAuth: []}],
+          summary: 'Atualiza dado do cliente',
+          description: 'Essa rota permite o cliente atualizar seu dado cadastrado. Precisa de autenticação.',
+          tags: ['Conta'],
+          security: [{ bearerAuth: [] }],
           requestBody: {
             content: {
-              "application/json": {
+              'application/json': {
                 schema: {
-                  "$ref": "#/components/schemas/EditInfo"
-                  }
-                }
+                  $ref: '#/components/schemas/EditInfo',
+                  },
+                },
               },
               required: true,
             },
           responses: {
             401: {
-              description: "Unauthorized",
+              description: 'Unauthorized',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
                     oneOf: [
-                      {"$ref": "#/components/schemas/Error401A"},
-                      {"$ref": "#/components/schemas/Error401B"}
-                    ]
-                  }
-                }
-              }
+                      { $ref: '#/components/schemas/Error401A' },
+                      { $ref: '#/components/schemas/Error401B' },
+                    ],
+                  },
+                },
+              },
             },
             400: {
-              description: "Bad Request",
+              description: 'Bad Request',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: '"token" is required!'
-                      }
+                        type: 'string',
+                        example: '"token" is required!',
+                      },
                     },
                   },
                 },
-              }
+              },
             },
             200: {
-              description: "OK",
+              description: 'OK',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    "$ref": "#/components/schemas/EditInfo",
-                  }
-                }
-              }
+                    $ref: '#/components/schemas/EditInfo',
+                  },
+                },
+              },
             },
             500: {
-              description: "Internal Server Error",
+              description: 'Internal Server Error',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: "Internal error!"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+                        type: 'string',
+                        example: 'Internal error!',
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
       },
-      "/investimentos/comprar": {
+      '/investimentos/comprar': {
         post: {
-          summary: "Realiza compra de ações, adicionando-as na carteira do cliente",
-          description: "Essa rota permite que o cliente faça aquisição de novos ativos. Precisa de autenticação. Valida se o ativo está disponível na corretora.",
-          tags: ["Investimentos"],
+          summary: 'Realiza compra de ações, adicionando-as na carteira do cliente',
+          description: 'Essa rota permite que o cliente faça aquisição de novos ativos. Precisa de autenticação. Valida se o ativo está disponível na corretora.',
+          tags: ['Investimentos'],
           // corrigir a parte da autenticação
-          security: [{bearerAuth: []}],
+          security: [{ bearerAuth: [] }],
           requestBody: {
             content: {
-              "application/json": {
+              'application/json': {
                 schema: {
-                  "$ref": "#/components/schemas/Buy_Assets"
-                  }
-                }
+                  $ref: '#/components/schemas/buyAssets',
+                  },
+                },
               },
               required: true,
             },
           responses: {
             401: {
-              description: "Unauthorized",
+              description: 'Unauthorized',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
                     oneOf: [
-                      {"$ref": "#/components/schemas/Error401A"},
-                      {"$ref": "#/components/schemas/Error401B"}
-                    ]
-                  }
-                }
-              }
+                      { $ref: '#/components/schemas/Error401A' },
+                      { $ref: '#/components/schemas/Error401B' },
+                    ],
+                  },
+                },
+              },
             },
             400: {
-              description: "Bad Request",
+              description: 'Bad Request',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: 'This quantity is not available!'
-                      }
+                        type: 'string',
+                        example: 'This quantity is not available!',
+                      },
                     },
                   },
                 },
-              }
+              },
             },
             201: {
-              description: "OK",
+              description: 'OK',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    "$ref": "#/components/schemas/Buy_Assets"
-                  }
-                }
-              }
+                    $ref: '#/components/schemas/buyAssets',
+                  },
+                },
+              },
             },
             500: {
-              description: "Internal Server Error",
+              description: 'Internal Server Error',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: "Internal error!"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+                        type: 'string',
+                        example: 'Internal error!',
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
       },
-      "/investimentos/vender": {
+      '/investimentos/vender': {
         post: {
-          summary: "Realiza venda de ações, removendo-as da carteira do cliente",
-          description: "Essa rota permite que o cliente venda suas ações. Precisa de autenticação. Valida que o valor a ser vendido não é maior que o que ele possui de ativos.",
-          tags: ["Investimentos"],
+          summary: 'Realiza venda de ações, removendo-as da carteira do cliente',
+          description: 'Essa rota permite que o cliente venda suas ações. Precisa de autenticação. Valida que o valor a ser vendido não é maior que o que ele possui de ativos.',
+          tags: ['Investimentos'],
           // corrigir a parte da autenticação
-          security: [{bearerAuth: []}],
+          security: [{ bearerAuth: [] }],
           requestBody: {
             content: {
-              "application/json": {
+              'application/json': {
                 schema: {
-                  "$ref": "#/components/schemas/Sell_Assets"
-                  }
-                }
+                  $ref: '#/components/schemas/sellAssets',
+                  },
+                },
               },
               required: true,
             },
           responses: {
             401: {
-              description: "Unauthorized",
+              description: 'Unauthorized',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
                     oneOf: [
-                      {"$ref": "#/components/schemas/Error401A"},
-                      {"$ref": "#/components/schemas/Error401B"}
-                    ]
-                  }
-                }
-              }
+                      { $ref: '#/components/schemas/Error401A' },
+                      { $ref: '#/components/schemas/Error401B' },
+                    ],
+                  },
+                },
+              },
             },
             400: {
-              description: "Bad Request",
+              description: 'Bad Request',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: 'You can not sale more assets than you have!'
-                      }
+                        type: 'string',
+                        example: 'You can not sale more assets than you have!',
+                      },
                     },
                   },
                 },
-              }
+              },
             },
             201: {
-              description: "OK",
+              description: 'OK',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    "$ref": "#/components/schemas/Sell_Assets",
-                  }
-                }
-              }
+                    $ref: '#/components/schemas/sellAssets',
+                  },
+                },
+              },
             },
             500: {
-              description: "Internal Server Error",
+              description: 'Internal Server Error',
               content: {
-                "application/json": {
+                'application/json': {
                   schema: {
-                    type: "object",
+                    type: 'object',
                     properties: {
                       message: {
-                        type: "string",
-                        example: "Internal error!"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+                        type: 'string',
+                        example: 'Internal error!',
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
       },
     },
       components: {
         schemas: {
           Login: {
-            type: "object",
+            type: 'object',
             properties: {
               email: {
-                type: "string",
+                type: 'string',
               },
               password: {
-                type: "string"
-              }
+                type: 'string',
+              },
             },
             example: {
-              email: "desafiotecnico@gmail.com",
-              password: "123456"
-            }
+              email: 'desafiotecnico@gmail.com',
+              password: '123456',
+            },
           }, 
           Token: {
-            type: "object",
+            type: 'object',
             properties: {
               token: {
-                type: "string"
+                type: 'string',
               }, 
               clientId: {
-                type: "integer"
-              }
+                type: 'integer',
+              },
             },
             example: {
-              token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-              clientId: 1
-            }
+              token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+              clientId: 1,
+            },
           },
-          Array_Assets: {
-            type: "object",
+          arrayAssets: {
+            type: 'object',
             properties: {
               assetId: {
-                type: "integer"
+                type: 'integer',
               },
               nameAsset: {
-                type: "string"
+                type: 'string',
               },
               price: {
-                type: "number"
-              }
+                type: 'number',
+              },
           },
             example: [{
               assetId: 1,
-              nameAsset: "ITSA4",
-              price: 8.35
+              nameAsset: 'ITSA4',
+              price: 8.35,
             },
             {
               assetId: 2,
-              nameAsset: "RENT3",
-              price: 54.40
-            }
-          ]
+              nameAsset: 'RENT3',
+              price: 54.40,
+            },
+          ],
           },
           Asset: {
-            type: "obejct",
+            type: 'obejct',
             properties: {
               assetId: {
-                type: "integer"
+                type: 'integer',
               },
               nameAsset: {
-                type: "string"
+                type: 'string',
               },
               price: {
-                type: "number"
-              }
+                type: 'number',
+              },
           },
             example: {
               assetId: 1,
-              nameAsset: "ITSA4",
-              price: 8.35
+              nameAsset: 'ITSA4',
+              price: 8.35,
             },
           },
-          Array_Assets_Client: {
-            type: "object",
+          arrayAssetsClient: {
+            type: 'object',
             properties: {
               clientId: {
-                type: "integer"
+                type: 'integer',
               },
               assetId: {
-                type: "integer"
+                type: 'integer',
               },
               price: {
-                type: "number"
+                type: 'number',
               },
               nameAsset: {
-                type: "string"
+                type: 'string',
               },
               quantity: {
-                type: "number"
-              }
+                type: 'number',
+              },
           },
             example: {
               clientId: 1,
               assetId: 2,
               price: 8.35,
-              nameAsset: "ITSA4",
-              quantityAsset: 100
+              nameAsset: 'ITSA4',
+              quantityAsset: 100,
             },
           },
           Deposit: {
-            type: "object",
+            type: 'object',
             properties: {
               clientId: {
-                type: "integer"
+                type: 'integer',
               },
               value: {
-                type: "number"
+                type: 'number',
               },
           },
             example: {
               clientId: 1,
-              value: 1000
+              value: 1000,
             },
           },
           Withdraw: {
-            type: "object",
+            type: 'object',
             properties: {
               clientId: {
-                type: "integer"
+                type: 'integer',
               },
               value: {
-                type: "number"
+                type: 'number',
               },
           },
             example: {
               clientId: 1,
-              value: 2000
+              value: 2000,
             },
           },
           Wallet: {
-            type: "object",
+            type: 'object',
             properties: {
               clientId: {
-                type: "integer"
+                type: 'integer',
               },
               balance: {
-                type: "number"
+                type: 'number',
               },
           },
             example: {
               clientId: 1,
-              balance: 20000
+              balance: 20000,
             },
           },
-          Buy_Assets: {
-            type: "object",
+          buyAssets: {
+            type: 'object',
             properties: {
               quantity: {
-                type: "number"
+                type: 'number',
               },
               clientId: {
-                type: "integer"
+                type: 'integer',
               },
               assetId: {
-                type: "integer"
+                type: 'integer',
               },
           },
             example: {
               quantity: 70,
               clientId: 1,
-              assetId: 3
+              assetId: 3,
             },
           },
-          Sell_Assets: {
-            type: "object",
+          sellAssets: {
+            type: 'object',
             properties: {
               quantity: {
-                type: "number"
+                type: 'number',
               },
               clientId: {
-                type: "integer"
+                type: 'integer',
               },
               assetId: {
-                type: "integer"
+                type: 'integer',
               },
           },
             example: {
               quantity: 70,
               clientId: 1,
-              assetId: 3
+              assetId: 3,
             },
           },
           EditInfo: {
-            type: "object",
+            type: 'object',
             properties: {
               clientId: {
-                type: "integer"
+                type: 'integer',
               },
               telephone: {
-                type: "string"
+                type: 'string',
               },
           },
             example: {
               clientId: 1,
-              telephone: "11988652340"
+              telephone: '11988652340',
             },
           },
           Register: {
-            type: "object",
+            type: 'object',
             properties: {
               name: {
-                type: "string"
+                type: 'string',
               },
               email: {
-                type: "string"
+                type: 'string',
               },
               password: {
-                type: "string"
+                type: 'string',
               },
               telephone: {
-                type: "string"
+                type: 'string',
               },
           },
             example: {
-              name: "Leticia",
-              email: "leticia@gmail.com",
-              password: "123456",
-              telephone: "11988652340"
+              name: 'Leticia',
+              email: 'leticia@gmail.com',
+              password: '123456',
+              telephone: '11988652340',
             },
           },
           Error401A: {
-            type: "object",
+            type: 'object',
             properties: {
               message: {
-                type: "string"
+                type: 'string',
               },
           },
             example: {
-              message: "Action not allowed!"
+              message: 'Action not allowed!',
             },
           },
           Error401B: {
-            type: "object",
+            type: 'object',
             properties: {
               message: {
-                type: "string"
+                type: 'string',
               },
           },
             example: {
-              message: '"token" is invalid'
+              message: '"token" is invalid',
             },
           },
         },
@@ -1036,12 +1039,12 @@ const swaggerConfig = {
           bearerAuth: {
             type: 'http',
             scheme: 'bearer',
-            bearerFormat: 'JWT'
-          }
-        }
+            bearerFormat: 'JWT',
+          },
+        },
       },
     },
-  apis: ["./src/routes/index.js", ],
-}
+  apis: ['./src/routes/index.js'],
+};
 
 module.exports = swaggerConfig;
