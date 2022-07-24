@@ -47,13 +47,20 @@ const deleteClient = async (clientId) => {
   }
 
   const [result] = await modelConta.deleteClient(clientId);
-  console.log(result)
+
   return result.affectedRows;
-}
+};
+
+const updateInfoClient = async (clientId, telephone) => {
+  const [result] = await modelConta.updateInfoClient(clientId, telephone);
+
+  return result.affectedRows
+};
 
 module.exports = {
   increaseCashInWallet,
   decreaseCashFromWallet,
   getWalletInfoById,
-  deleteClient
+  deleteClient,
+  updateInfoClient
 }

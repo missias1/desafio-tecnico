@@ -138,3 +138,30 @@ describe('CONTROLLER - Deleta conta do cliente',()=>{
     });
 
 });
+
+describe('CONTROLLER - Atualiza dado do cliente',()=>{
+  const req = {};
+  const res = {}
+
+  before(()=>{
+    req.body = mocks.UPDATE_INFO;
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+    sinon.stub(serviceConta, 'updateInfoClient').resolves();
+  });
+
+  after(()=> {
+    serviceConta.updateInfoClient.restore();
+  })
+    it('É retornado um status 200', async ()=> {
+      await controllerConta.updateInfoClient(req, res);
+
+      expect(res.status.calledWith(200)).to.be.true;
+    });
+    it('É retornado um objeto', async ()=> {
+      await controllerConta.updateInfoClient(req, res);
+
+      expect(res.json.calledWith(mocks.UPDATE_INFO)).to.be.true;
+    });
+
+});

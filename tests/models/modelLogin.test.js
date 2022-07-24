@@ -6,7 +6,7 @@ const mocks = require('../mocks');
 
 describe('MODEL - Procura pelo cliente no banco de dados',()=>{
 
-  describe('Usuário é encontrado com sucesso', ()=> {
+  describe('Cliente é encontrado com sucesso, email e senha corretos.', ()=> {
 
     beforeEach(()=>{
       sinon.stub(connection, 'execute').resolves([mocks.USER_INFO]);
@@ -27,7 +27,7 @@ describe('MODEL - Procura pelo cliente no banco de dados',()=>{
 
   });
 
-  describe('Usuário não é encontrado', ()=> {
+  describe('Cliente não é encontrado', ()=> {
 
     beforeEach(()=>{
       sinon.stub(connection, 'execute').resolves([undefined]);
@@ -52,7 +52,7 @@ describe('MODEL - Procura pelo cliente no banco de dados',()=>{
 
 describe('MODEL - Procura pelo cliente no banco de dados por meio do id',()=>{
 
-  describe('Usuário é encontrado com sucesso', ()=> {
+  describe('Cliente é encontrado com sucesso', ()=> {
 
     beforeEach(()=>{
       sinon.stub(connection, 'execute').resolves([mocks.USER_INFO]);
@@ -73,7 +73,7 @@ describe('MODEL - Procura pelo cliente no banco de dados por meio do id',()=>{
 
   });
 
-  describe('Usuário não é encontrado', ()=> {
+  describe('Cliente não é encontrado', ()=> {
 
     beforeEach(()=>{
       sinon.stub(connection, 'execute').resolves([undefined]);
@@ -86,6 +86,42 @@ describe('MODEL - Procura pelo cliente no banco de dados por meio do id',()=>{
 
     it('Retorna undefined', async ()=> {
       const user = await modelLogin.findClientById(clientId)
+    });
+
+  });
+
+});
+
+describe.only('MODEL - Procura pelo cliente no banco de dados por meio do email',()=>{
+
+  describe('Cliente é encontrado com sucesso', ()=> {
+
+    beforeEach(()=>{
+      sinon.stub(connection, 'execute').resolves([mocks.USER_INFO.email]);
+    });
+    afterEach(()=>{
+      connection.execute.restore();
+    });
+
+    const { clientId } = mocks.USER_INFO
+    it('Verifica se retorna uma string', async ()=> {
+      const user = await modelLogin.findClientByEmail(clientId);
+      expect(user).to.be.an('string');
+    })
+  });
+
+  describe('Cliente não é encontrado pelo email', ()=> {
+
+    beforeEach(()=>{
+      sinon.stub(connection, 'execute').resolves([[undefined]]);
+    });
+    afterEach(()=>{
+      connection.execute.restore();
+    });
+
+    it('Retorna undefined', async ()=> {
+      const user = await modelLogin.findClientByEmail(mocks.USER_INFO.email);
+      expect(user).to.be.an('undefined');
     });
 
   });

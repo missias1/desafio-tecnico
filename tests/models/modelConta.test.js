@@ -72,7 +72,7 @@ describe('MODEL - Deleta a conta do cliente',()=>{
 
 });
 
-describe.only('MODEL - Atualiza dado do usuário',()=>{
+describe('MODEL - Atualiza dado do cliente',()=>{
 
   beforeEach(()=>{
     sinon.stub(connection, 'execute').resolves([[], []]);

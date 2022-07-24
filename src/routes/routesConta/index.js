@@ -8,6 +8,6 @@ routes.post('/deposito', authentication, validateDeposit, controllerConta.increa
 routes.post('/saque', authentication, validateWithdraw, controllerConta.decreaseCashFromWallet);
 routes.get('/:clientId', authentication, controllerConta.getWalletInfoById);
 routes.delete('/delete/:clientId', controllerConta.deleteClient);
-routes.put('/edit', )
+routes.put('/edit', controllerConta.updateInfoClient);
 
 module.exports = routes;

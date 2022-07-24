@@ -247,3 +247,24 @@ describe('SERVICE - Deleta cliente do banco de dados',()=>{
 
   });
 });
+
+describe('SERVICE - Atualiza dado do cliente',()=>{
+
+  describe('Dado é atualizado com sucesso', ()=> {
+
+    beforeEach(()=>{
+      sinon.stub(modelConta, 'updateInfoClient').resolves([mocks.AFFECTED_ROWS]);
+    });
+    afterEach(()=>{
+      modelConta.updateInfoClient.restore();
+    });
+  
+    it('Verifica que o banco de dados foi alterado', async ()=> {
+      const result = await serviceConta.updateInfoClient(mocks.UPDATE_INFO);
+      expect(result).to.be.equal(1)
+    });
+
+  });
+
+});
+
