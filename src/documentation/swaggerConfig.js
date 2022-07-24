@@ -66,6 +66,56 @@ const swaggerConfig = {
             }
           }
         },
+      "/register": {
+        post: {
+          summary: "Área de Cadastro",
+          description: "Essa rota permite o cliente fazer cadastro",
+          tags: ["Cadastro"],
+          requestBody: {
+            content: {
+              "application/json": {
+                schema: {
+                  "$ref": "#/components/schemas/Register"
+                  }
+                }
+              }
+            },
+            responses: {
+              400: {
+                description: "Bad Request",
+                content: {
+                  "application/json": {
+                    schema: {
+                      type: "object",
+                      properties: {
+                        message: {
+                          type: "string",
+                          example: "Email already exist!"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              201: {
+                description: "Created",
+                content: {
+                  "application/json":{
+                    schema: {
+                      type: "object",
+                      properties: {
+                        message: {
+                          type: "string",
+                          example: "Created account!"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+        }
+      },
       "/ativos": {
         get: {
           summary: "Lista todas as ações",
@@ -482,6 +532,81 @@ const swaggerConfig = {
             },
             204: {
               description: "No content",
+            },
+            500: {
+              description: "Internal Server Error",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: "Internal error!"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/conta/edit": {
+        put: {
+          summary: "Atualiza dado do cliente",
+          description: "Essa rota permite o cliente atualizar seu dado cadastrado. Precisa de autenticação.",
+          tags: ["Conta"],
+          security: [{bearerAuth: []}],
+          requestBody: {
+            content: {
+              "application/json": {
+                schema: {
+                  "$ref": "#/components/schemas/EditInfo"
+                  }
+                }
+              },
+              required: true,
+            },
+          responses: {
+            401: {
+              description: "Unauthorized",
+              content: {
+                "application/json": {
+                  schema: {
+                    oneOf: [
+                      {"$ref": "#/components/schemas/Error401A"},
+                      {"$ref": "#/components/schemas/Error401B"}
+                    ]
+                  }
+                }
+              }
+            },
+            400: {
+              description: "Bad Request",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      message: {
+                        type: "string",
+                        example: '"token" is required!'
+                      }
+                    },
+                  },
+                },
+              }
+            },
+            200: {
+              description: "OK",
+              content: {
+                "application/json": {
+                  schema: {
+                    "$ref": "#/components/schemas/EditInfo",
+                  }
+                }
+              }
             },
             500: {
               description: "Internal Server Error",
