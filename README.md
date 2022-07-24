@@ -13,19 +13,23 @@ Esse projeto foi realizado para o desafio técnico e tem como objetivo:
 - Como rodar a API
 - Executando aplicação
 - Executando testes
-- Diagrama de Relacionamento do banco de dados
+- Diagrama e Mapa de atividades
 - Deploy no Heroku
 - Documentação Swagger
 - Aprendizados
 
 ## Tecnologias Utilizadas e tomada de decisão ✔️
 
-```bash
-NodeJS, MySQL, Heroku, Swagger, ExpressJS, Mocha, Chai, Sinon
-```
-O projeto foi desenvolvido com a arquitetura MSC (Model, Service, Controller), possibilitando que as reponsabilidades das funções fiquem em camadas separadas. 
+O projeto foi desenvolvido com a arquitetura MSC (Model, Service, Controller), possibilitando que as funções desempenhem um papel específico de acordo com sua camada.
 
-As tecnologias utilizadas foram as aprendidas até aqui como o NodeJS, ExpressJS e MySQL. Esta última foi optada, ao invés de um ORM, por dar maior controle na manipulação do banco de dados e permitir escrever as queries. Utilizando o MySQL, pude trabalhar tendo mais domínio das saídas esperadas, além de possibilitar maior entendimento ao lidar com banco de dados.
+![alt text](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) ![alt text](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) ![alt text](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+
+As tecnologias utilizadas foram as aprendidas até aqui como o NodeJS, ExpressJS e MySQL. Esta última foi optada, ao invés de um ORM, por dar maior controle na manipulação do banco de dados e permitir escrever as queries. Utilizando o MySQL, pude trabalhar tendo mais domínio das saídas esperadas pelo banco, além de possibilitar maior entendimento ao lidar com o banco de dados.
+
+Para realizar os testes, foram utilizadas as bibliotecas aprendidas até aqui: Sinon, Mocha e Chai.
+
+![alt text](https://img.shields.io/badge/Mocha-8D6748?style=for-the-badge&logo=Mocha&logoColor=white) ![alt text](https://img.shields.io/badge/chai-A30701?style=for-the-badge&logo=chai&logoColor=white)
+
 
 ## Instalação ✔️
 
@@ -79,7 +83,7 @@ JWT_SECRET=
 
 ## Executando aplicação ✔️
 
-Rode o comando abaixo para inicializar o servidor. Ele rodará na porta que especificada no arquivo `.env`.
+Rode o comando abaixo para inicializar o servidor. Ele rodará na porta que foi especificada no arquivo `.env`.
 
 ```bash
   npm run dev
@@ -103,7 +107,7 @@ Os testes estão com 86% de cobertura, para verificar a cobertura de testes, rod
 Foi feito o deploy do projeto no Heroku, utilizando o clearDB como serviço de banco de dados externo.
 
 ```bash
-  link aqui 
+  https://missias1-desafio-tecnico.herokuapp.com/ativos
 ```
 Para testar os endpoints, é necessário utilizar uma API Client como o [Insomnia](https://insomnia.rest/) ou [Postman](https://www.postman.com/). 
 
