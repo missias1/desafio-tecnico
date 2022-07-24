@@ -71,3 +71,19 @@ describe('MODEL - Deleta a conta do cliente',()=>{
     });
 
 });
+
+describe.only('MODEL - Atualiza dado do usuário',()=>{
+
+  beforeEach(()=>{
+    sinon.stub(connection, 'execute').resolves([[], []]);
+  })
+  afterEach(()=>{
+    connection.execute.restore();
+  })
+
+    it('Verifica se retorna um array', async ()=> {
+      const result = await modelConta.updateInfoClient(mocks.UPDATE_INFO);
+      expect(result).to.be.an('array');
+    });
+
+});

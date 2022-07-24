@@ -1,3 +1,4 @@
+const { execute } = require('../connection');
 const connection = require('../connection');
 
 const increaseCashInWallet = async (value, clientId)=> connection.execute(
@@ -17,15 +18,22 @@ const getWalletInfoById = async (clientId)=> {
   `SELECT client_id AS clientId, balance FROM heroku_3a2342a6c76f266.clients WHERE client_id=?;`, [clientId]
   );
   return client;
-}
+};
 
 const deleteClient = async (clientId)=> connection.execute(
   `DELETE FROM heroku_3a2342a6c76f266.clients WHERE client_id = ?;`, [clientId]
+);
+
+const updateInfoClient = async (clientId, telephone) => connection.execute(
+  `UPDATE heroku_3a2342a6c76f266.clients
+    SET telephone = ? 
+    WHERE client_id = ?;`, [clientId, telephone]
 );
 
 module.exports = {
   increaseCashInWallet,
   decreaseCashFromWallet,
   getWalletInfoById,
-  deleteClient
+  deleteClient,
+  updateInfoClient
 }

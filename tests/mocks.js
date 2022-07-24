@@ -100,7 +100,10 @@ const EMAIL_EXIST = "pedrinho@gmail.com"
 
 const SUCESS_CREATED = "Created account!"
 
-const SUCESS_DELETE = "Account deleted!"
+const UPDATE_INFO = {
+  clientId: 1,
+  telephone: "22988345670"
+}
 
 module.exports = {
   ARRAY_ASSETS,
@@ -122,5 +125,5 @@ module.exports = {
   NEW_USER,
   EMAIL_EXIST,
   SUCESS_CREATED,
-  SUCESS_DELETE
+  UPDATE_INFO
 }
