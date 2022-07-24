@@ -100,6 +100,8 @@ const EMAIL_EXIST = "pedrinho@gmail.com"
 
 const SUCESS_CREATED = "Created account!"
 
+const SUCESS_DELETE = "Account deleted!"
+
 module.exports = {
   ARRAY_ASSETS,
   ASSET,
@@ -119,5 +121,6 @@ module.exports = {
   TOKEN,
   NEW_USER,
   EMAIL_EXIST,
-  SUCESS_CREATED
+  SUCESS_CREATED,
+  SUCESS_DELETE
 }

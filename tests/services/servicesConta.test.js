@@ -191,7 +191,7 @@ describe('SERVICE - Lista informação do saldo do cliente',()=>{
   });
 });
 
-describe.only('SERVICE - Deleta cliente do banco de dados',()=>{
+describe('SERVICE - Deleta cliente do banco de dados',()=>{
 
   const { clientId } = mocks.DEPOSIT_INFO;
   describe('Cliente é deletado com sucesso', ()=> {

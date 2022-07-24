@@ -21,8 +21,16 @@ const getWalletInfoById = async (req, res)=> {
   res.status(200).json(walletInfo);
 };
 
+const deleteClient = async (req, res) => {
+  const { clientId } = req.params;
+  await serviceConta.deleteClient(clientId);
+
+  return res.status(204).json({ message: "Account deleted!" });
+}
+
 module.exports = {
   increaseCashInWallet,
   decreaseCashFromWallet,
   getWalletInfoById,
+  deleteClient,
 }

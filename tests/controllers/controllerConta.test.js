@@ -84,3 +84,57 @@ describe('CONTROLLER - Lista saldo na conta do cliente pelo Id',()=>{
     });
 
 });
+
+describe('CONTROLLER - Realiza saque na conta do cliente',()=>{
+  const req = {};
+  const res = {}
+
+  before(()=>{
+    req.body = mocks.WITHDRAW_INFO;
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+    sinon.stub(serviceConta, 'decreaseCashFromWallet').resolves(mocks.WITHDRAW_INFO);
+  });
+
+  after(()=> {
+    serviceConta.decreaseCashFromWallet.restore();
+  })
+    it('É retornado um status 201', async ()=> {
+      await controllerConta.decreaseCashFromWallet(req, res);
+
+      expect(res.status.calledWith(201)).to.be.true;
+    });
+    it('É retornado um objeto', async ()=> {
+      await controllerConta.decreaseCashFromWallet(req, res);
+
+      expect(res.json.calledWith(mocks.WITHDRAW_INFO)).to.be.true;
+    });
+
+});
+
+describe.only('CONTROLLER - Deleta conta do cliente',()=>{
+  const req = {};
+  const res = {}
+
+  before(()=>{
+    req.params = { id: 1 };
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+    sinon.stub(serviceConta, 'deleteClient').resolves();
+  });
+
+  after(()=> {
+    serviceConta.deleteClient.restore();
+  })
+    it('É retornado um status 204', async ()=> {
+      await controllerConta.deleteClient(req, res);
+
+      expect(res.status.calledWith(204)).to.be.true;
+    });
+    it('É retornado um objeto', async ()=> {
+      await controllerConta.deleteClient(req, res);
+
+      expect(res.json.calledWith({ message: mocks.SUCESS_DELETE })).to.be.true;
+    });
+
+});
