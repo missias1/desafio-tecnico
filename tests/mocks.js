@@ -36,6 +36,12 @@ const WALLET_INFO = {
 	clientId: 1,
 	balance: 10000
 }
+
+const WALLET_INFO_EMPTY = {
+	clientId: 1,
+	balance: 0
+}
+
 const LOGIN = {
   email: "pedro@gmail.com",
   password: "123456"
@@ -99,6 +105,7 @@ module.exports = {
   ASSET,
   ASSETS_FROM_CLIENT,
   WALLET_INFO,
+  WALLET_INFO_EMPTY,
   USER_INFO,
   AFFECTED_ROWS,
   NOT_AFFECTED_ROWS,

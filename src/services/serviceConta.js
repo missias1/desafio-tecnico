@@ -1,4 +1,5 @@
 const modelConta = require('../database/models/modelConta');
+const modelAtivos = require('../database/models/modelAtivos');
 const createErrorObj = require('../utils/createErrorObj')
 
 const increaseCashInWallet = async (value, clientId)=> {
@@ -36,8 +37,23 @@ const getWalletInfoById = async (clientId)=> {
   return walletInfo;
 };
 
+const deleteClient = async (clientId) => {
+
+  const [walletInfo] = await modelConta.getWalletInfoById(clientId);
+  const assetsInfo = await modelAtivos.getAssetsFromOneClientById(clientId);
+
+  if(walletInfo.balance > 0 || assetsInfo.length !== 0){
+    throw createErrorObj(400, "You have assets or cash in your account and can not delete")
+  }
+
+  const [result] = await modelConta.deleteClient(clientId);
+  console.log(result)
+  return result.affectedRows;
+}
+
 module.exports = {
   increaseCashInWallet,
   decreaseCashFromWallet,
   getWalletInfoById,
+  deleteClient
 }

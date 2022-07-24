@@ -56,7 +56,7 @@ describe('MODEL - Lista informações da conta do cliente',()=>{
 
 });
 
-describe.only('MODEL - Deleta a conta do cliente',()=>{
+describe('MODEL - Deleta a conta do cliente',()=>{
 
   beforeEach(()=>{
     sinon.stub(connection, 'execute').resolves([[], []]);
@@ -66,8 +66,8 @@ describe.only('MODEL - Deleta a conta do cliente',()=>{
   })
 
     it('Verifica se retorna um array', async ()=> {
-      const result = await modelConta.getWalletInfoById(1);
-      expect(result).to.be.an('arrray');
+      const result = await modelConta.deleteClient(1);
+      expect(result).to.be.an('array');
     });
 
 });
