@@ -1,4 +1,4 @@
-# API para corretora de investimentos
+# API para corretora de investimentos :chart_with_upwards_trend:
 
 Esse projeto foi realizado para o desafio técnico e tem como objetivo: 
 
@@ -7,7 +7,7 @@ Esse projeto foi realizado para o desafio técnico e tem como objetivo:
 - Realizar login e criar contas;
 - Ser utilizada para se comunicar com o front de um aplicativo de investimentos em ações.
 
-## Lista de conteúdo
+## Lista de conteúdo :page_facing_up:
 - Tecnologias Utilizadas e tomada de decisão
 - Instalação
 - Como rodar a API
@@ -17,7 +17,7 @@ Esse projeto foi realizado para o desafio técnico e tem como objetivo:
 - Documentação Swagger
 - Diagramas
 
-## Tecnologias Utilizadas e tomada de decisão ✔️
+## Tecnologias utilizadas e tomada de decisão ✔️
 
 O projeto foi desenvolvido com a arquitetura MSC (Model, Service, Controller), possibilitando que as funções desempenhem um papel específico de acordo com sua camada.
 
@@ -29,9 +29,9 @@ Para realizar os testes foram utilizadas as bibliotecas aprendidas até aqui: Si
 
 ![alt text](https://img.shields.io/badge/Mocha-8D6748?style=for-the-badge&logo=Mocha&logoColor=white) ![alt text](https://img.shields.io/badge/chai-A30701?style=for-the-badge&logo=chai&logoColor=white)
 
-Outras tecnologias utilizadas foram o JWT para fazer autenticação nas rotas, o Heroku para deploy, Swagger para documentar os endpoints e o Docker para desenvolver o projeto.
+Outras tecnologias utilizadas foram o JWT para fazer autenticação nas rotas, o Heroku para deploy, Swagger para documentar os endpoints, o Docker para desenvolver o projeto e o eslint para padronização do código.
 
-![alt text](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white) ![alt text](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white) ![alt text](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white) ![alt text](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
+![alt text](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white) ![alt text](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white) ![alt text](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white) ![alt text](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white) ![alt text](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
 
 ## Instalação ✔️
 
