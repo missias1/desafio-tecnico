@@ -62,7 +62,7 @@ JWT_SECRET=suachave
 - ### Rodando localmente 💻
 
     É necessário ter o node instalado. Caso deseja saber mais, veja [aqui](https://balta.io/blog/node-npm-instalacao-configuracao-e-primeiros-passos).
-    Os comando do script dentro do arquivo `package.json` podem ser utilizados no seu próprio terminal com a utilização do Mysql localmente.
+    Os comando do script dentro do arquivo `package.json` podem ser utilizados no seu próprio terminal com a utilização do MySQL localmente.
 
 - ### Rodando com Docker 🐳 
     É necessário ter o Docker e o Docker Compose instalados. Caso deseja saber mais, veja [aqui](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04).
@@ -104,19 +104,20 @@ Os testes estão com `86%` de cobertura, para verificar a cobertura de testes, r
 ```bash
   npm run coverage
 ```
+<img src="https://user-images.githubusercontent.com/87737714/180671335-40c792f2-e9b9-4d9c-bf6d-219bcdbc994b.png" width= "600">
 
 ## Deploy no Heroku ✔️
 
 Foi feito o deploy do projeto no Heroku, utilizando o clearDB como serviço de banco de dados externo.
 
 ```bash!
-
   https://missias1-desafio-tecnico.herokuapp.com/ativos
 ```
 Para testar os endpoints, é necessário utilizar uma API Client como o [Insomnia](https://insomnia.rest/) ou [Postman](https://www.postman.com/). 
 
 Assim é possível enviar requisições de POST, PUT, DELETE e acessar as rotas que exigem autenticação.
 
+<img src="https://img.shields.io/badge/Insomnia-5849be?style=for-the-badge&logo=Insomnia&logoColor=white" width= "100"> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white" width= "100">
 
 ## Documentação com Swagger ✔️
 
