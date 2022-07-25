@@ -16,7 +16,7 @@ Esse projeto foi realizado para o desafio técnico e tem como objetivo:
 - Deploy no Heroku
 - Documentação Swagger
 - Diagramas
-- 5 Aprendizados
+- 7 Aprendizados
 
 ## Tecnologias utilizadas e tomada de decisão ✔️
 
@@ -143,9 +143,11 @@ Foi feita uma abordagem mais simples para lidar com o banco de dados. O foco foi
 #### Relação das tabelas
 <img src="/images/diagrama_database.png" width= "800">
 
-## 5 Aprendizados
+## 7 Aprendizados
 - Em caso de erro, sempre verifique a importação do arquivo
 - Entender bem o problema, sempre é o primeiro passo
 - Sempre observe e leia os logs dos erros no terminal atentamente
 - Comemore os avanços
 - Escrever o problema no papel pode gerar bons insigths
+- O Swagger é muito bom
+- TDD pode ser divertido
