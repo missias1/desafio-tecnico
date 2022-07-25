@@ -148,4 +148,4 @@ Foi feita uma abordagem mais simples para lidar com o banco de dados. O foco foi
 - Entender bem o problema, sempre é o primeiro passo
 - Sempre observe e leia os logs dos erros no terminal atentamente
 - Comemore os avanços
-- Escrever o problema no papel pode te dar bons insigths
+- Escrever o problema no papel pode gerar bons insigths
