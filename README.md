@@ -63,7 +63,7 @@ JWT_SECRET=suachave
 - ### Rodando localmente 💻
 
     É necessário ter o node instalado. Caso deseja saber mais, veja [aqui](https://balta.io/blog/node-npm-instalacao-configuracao-e-primeiros-passos).
-    Os comando do script dentro do arquivo `package.json` podem ser utilizados no seu próprio terminal com a utilização do MySQL localmente.
+    Os comandos do script dentro do arquivo `package.json` podem ser utilizados no seu próprio terminal com a utilização do MySQL localmente (sem Docker).
 
 - ### Rodando com Docker 🐳 
     É necessário ter o Docker e o Docker Compose instalados. Caso deseja saber mais, veja [aqui](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04).
