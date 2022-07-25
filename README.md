@@ -27,7 +27,7 @@ As tecnologias utilizadas foram as aprendidas até aqui como o NodeJS, ExpressJS
 
 Para realizar os testes foram utilizadas as bibliotecas aprendidas até aqui: Sinon, Mocha e Chai.
 
-![alt text](https://img.shields.io/badge/Mocha-8D6748?style=for-the-badge&logo=Mocha&logoColor=white) ![alt text](https://img.shields.io/badge/chai-A30701?style=for-the-badge&logo=chai&logoColor=white)
+<img src="https://user-images.githubusercontent.com/87737714/180674056-244f10ac-0706-46a6-828c-f83eefba4080.png" width="90" /> ![alt text](https://img.shields.io/badge/Mocha-8D6748?style=for-the-badge&logo=Mocha&logoColor=white) ![alt text](https://img.shields.io/badge/chai-A30701?style=for-the-badge&logo=chai&logoColor=white)
 
 Outras tecnologias utilizadas foram o JWT para fazer autenticação nas rotas, o Heroku para deploy, Swagger para documentar os endpoints, o Docker para desenvolver o projeto e o eslint para padronização do código.
 
@@ -106,7 +106,7 @@ Os testes estão com `86%` de cobertura, para verificar a cobertura de testes, r
 ```
 <img src="https://user-images.githubusercontent.com/87737714/180671335-40c792f2-e9b9-4d9c-bf6d-219bcdbc994b.png" width= "600">
 
-## Deploy no Heroku ✔️
+## [Deploy no Heroku](https://missias1-desafio-tecnico.herokuapp.com/ativos) ✔️
 
 Foi feito o deploy do projeto no Heroku, utilizando o clearDB como serviço de banco de dados externo.
 
