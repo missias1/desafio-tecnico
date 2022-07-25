@@ -21,6 +21,7 @@ Esse projeto foi realizado para o desafio técnico e tem como objetivo:
 
 O projeto foi desenvolvido com a arquitetura MSC (Model, Service, Controller), possibilitando que as funções desempenhem um papel específico de acordo com sua camada.
 
+
 ![alt text](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) ![alt text](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) ![alt text](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 
 As tecnologias utilizadas foram as aprendidas até aqui como o NodeJS, ExpressJS e MySQL. Esta última foi optada, ao invés de um ORM, por dar maior controle na manipulação do banco de dados e permitir escrever as queries. Utilizando o MySQL, pude trabalhar tendo mais domínio das saídas esperadas pelo banco, além de possibilitar maior entendimento ao lidar com o banco de dados.
@@ -119,7 +120,7 @@ Assim é possível enviar requisições de POST, PUT, DELETE e acessar as rotas 
 
 <img src="https://img.shields.io/badge/Insomnia-5849be?style=for-the-badge&logo=Insomnia&logoColor=white" width= "100"> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white" width= "100">
 
-## Documentação com Swagger ✔️
+## [Documentação com Swagger](https://missias1-desafio-tecnico.herokuapp.com/docs/) ✔️
 
 A documentação de todas as rotas foi feita utilizando o Swagger. Nele é possível ver as respostas esperadas para cada endpoint, bem como seu formato.
 
