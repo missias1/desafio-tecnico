@@ -128,7 +128,9 @@ A documentação de todas as rotas foi feita utilizando o Swagger. Nele é poss�
   https://missias1-desafio-tecnico.herokuapp.com/docs/
 ```
 
-Obs: Foi a primeira vez utilizando o Swagger e por algum motivo a autenticação dele para acessar as rotas sempre retorna o token como inválido. No entanto, por meio da API Client é possível ver o token funcionando corretamente.
+Obs1: Foi a primeira vez utilizando o Swagger e por algum motivo a autenticação dele para acessar as rotas sempre retorna o token como inválido. No entanto, por meio da API Client é possível ver o token funcionando corretamente.
+
+Obs2: Selecione o servidor do deploy para que não ocorra erro de conexão com a rede.
 
 ## Diagramas ✔️
 Foi feita uma abordagem mais simples para lidar com o banco de dados. O foco foi listar as atividades que o usuário pode realizar dentro do aplicativo. Desconsiderando outros papeis com maiores poderes de acesso.
