@@ -137,11 +137,11 @@ Obs2: Selecione o servidor do deploy para que não ocorra erro de conexão com a
 Foi feita uma abordagem mais simples para lidar com o banco de dados. O foco foi listar as atividades que o usuário pode realizar dentro do aplicativo. Desconsiderando outros papeis com maiores poderes de acesso.
 
 #### Ações que o usuário pode realizar
-<img src="/images/mapa_acoes_do_cliente.jpg" width= "800">
+<img src="/images/mapa_acoes_do_cliente.jpg" width= "600">
 
 
 #### Relação das tabelas
-<img src="/images/diagrama_database.png" width= "800">
+<img src="/images/diagrama_database.png" width= "600">
 
 ## 7 Aprendizados
 - Em caso de erro, sempre verifique a importação do arquivo
